@@ -29,29 +29,31 @@ fun HomeContentScreen(
             state = state
         ) {
             //agrega un item al principio antes de dibujar la lista de items
-            item {
-                Text(
-                    text = "Categories",
-                    style = MaterialTheme.typography.h5,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.padding(16.dp,0.dp),
-//                .weight(0.5f),
-                    textAlign = TextAlign.Left,
+            if (homeUiState.labels) {
+                item {
+                    Text(
+                        text = "Categories",
+                        style = MaterialTheme.typography.h5,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.padding(16.dp,0.dp),
+                        textAlign = TextAlign.Left,
 
-                    )
+                        )
+                }
             }
             item {
                 BannerCategoryScreen(homeUiState = homeUiState, homeViewModel = homeViewModel)
             }
-            item {
-                Text(
-                    text = "Products",
-                    style = MaterialTheme.typography.h5,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.padding(16.dp,0.dp),
-//                .weight(0.5f),
-                    textAlign = TextAlign.Left,
+            if (homeUiState.labels) {
+                item {
+                    Text(
+                        text = "Products",
+                        style = MaterialTheme.typography.h5,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.padding(16.dp,0.dp),
+                        textAlign = TextAlign.Left,
                     )
+                }
             }
             // Usar esto en lugar de items porque funciona lento
             item {

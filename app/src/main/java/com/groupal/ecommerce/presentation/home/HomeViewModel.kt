@@ -30,7 +30,8 @@ class HomeViewModel @Inject constructor(
                     _state.update {
                         it.copy(
                             products = result.data ?: emptyList(),
-//                            isLoading = false
+                            labels = true,
+                            isLoading = false
                         )
                     }
                 }
@@ -53,7 +54,7 @@ class HomeViewModel @Inject constructor(
                     _state.update {
                         it.copy(
                             categories = result.data ?: emptyList(),
-                            isLoading = false
+//                            isLoading = false,
                         )
                     }
                 }

@@ -9,6 +9,7 @@ data class HomeScreenState(
     val products: List<Product> = emptyList(),
     val categories: List<Category> = emptyList(),
     val product: Product? = null,
+    val labels: Boolean = false,
     val isProductOpen: Boolean = false,
     val error: String = ""
 )
