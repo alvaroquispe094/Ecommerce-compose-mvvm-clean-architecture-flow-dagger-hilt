@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -47,13 +48,13 @@ fun ProductDetailScreen (
                 modifier = Modifier.border(BorderStroke(0.dp,Color.White))
                     .shadow(0.dp)
             ){
-                CompositionLocalProvider(
+//                CompositionLocalProvider(
                     LocalContentAlpha provides ContentAlpha.high
-                ) {
+//                ) {
                     IconButton(onClick = {homeViewModel.interactedWithFeed()}) {
                         Icon(Icons.Rounded.ArrowBack, contentDescription = "Volver",tint = Purple500)
                     }
-                }
+//                }
 
                 CompositionLocalProvider(
                     LocalContentAlpha provides ContentAlpha.high,

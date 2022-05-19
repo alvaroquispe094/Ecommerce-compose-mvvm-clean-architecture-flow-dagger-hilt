@@ -99,7 +99,7 @@ class HomeViewModel @Inject constructor(
         _state.update {
             it.copy(
                 isProductOpen = true,
-                isHomeOpen = false,
+//                isHomeOpen = false,
                 product = product
             )
         }
@@ -165,7 +165,7 @@ class HomeViewModel @Inject constructor(
         _state.update {
             it.copy(
                 isProductOpen = false,
-                isHomeOpen = true
+//                isHomeOpen = true
             )
         }
 //        getProducts()

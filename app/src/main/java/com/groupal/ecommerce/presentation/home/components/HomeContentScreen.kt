@@ -1,9 +1,7 @@
 package com.groupal.ecommerce.presentation.home.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.*
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -19,13 +17,17 @@ import com.groupal.ecommerce.presentation.home.HomeViewModel
 @Composable
 fun HomeContentScreen(
     homeUiState: HomeScreenState,
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
+    state: LazyListState = rememberLazyListState(),
 ){
     // Screen home content
     Box(modifier = Modifier
         .padding(8.dp)) {
 
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            state = state
+        ) {
             //agrega un item al principio antes de dibujar la lista de items
             item {
                 Text(

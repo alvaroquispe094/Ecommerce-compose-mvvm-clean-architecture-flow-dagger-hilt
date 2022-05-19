@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,7 +18,8 @@ import com.groupal.ecommerce.presentation.navigation.TopBarNavigation
 fun HomeScreen(
     openDrawer: () -> Unit,
     homeUiState: HomeScreenState,
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
+    homeListLazyListState: LazyListState,
 ) {
     val scaffoldState = rememberScaffoldState()
     Scaffold(
@@ -35,7 +38,7 @@ fun HomeScreen(
             verticalArrangement = Arrangement.SpaceBetween
         ){
             //Screen home content
-            HomeContentScreen(homeUiState, homeViewModel)
+            HomeContentScreen(homeUiState, homeViewModel, homeListLazyListState)
         }
     }
 }

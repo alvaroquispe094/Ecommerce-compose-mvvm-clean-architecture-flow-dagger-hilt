@@ -8,7 +8,7 @@ plugins {
 android {
     signingConfigs {
         release {
-            storeFile file('C:\\Users\\Alvaro-PC\\keys\\ecommerce\\ecommerce.jks')
+            storeFile file('C:\\Users\\Alvaro-PC\\AndroidStudioProjects\\ecommerce\\ecommerce.jks')
             storePassword 'android'
             keyAlias 'android'
             keyPassword 'android'
