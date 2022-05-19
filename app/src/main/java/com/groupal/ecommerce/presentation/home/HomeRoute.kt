@@ -29,17 +29,14 @@ fun HomeRoute(
     when (getHomeScreenType(isExpandedScreen, state)) {
         //pantalla principal de home
         HomeScreenEnum.Feed -> {
-            check(true)
             HomeScreen(openDrawer,state,homeViewModel, homeListLazyListState)
         }
         //pantalla de detalle de producto seleccionado
         HomeScreenEnum.ArticleDetails -> {
-            check(true)
             ProductDetailScreen(openDrawer,state)
         }
 
         else -> {
-            check(true)
             HomeScreen(openDrawer,state,homeViewModel,homeListLazyListState)
         }
     }
