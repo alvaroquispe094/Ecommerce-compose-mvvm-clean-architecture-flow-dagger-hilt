@@ -97,7 +97,7 @@ fun ProductDetailScreen (
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
-                                text = "${product.title})",
+                                text = "${product.title}",
                                 style = MaterialTheme.typography.h3,
                                 modifier = Modifier.weight(8f)
                             )
