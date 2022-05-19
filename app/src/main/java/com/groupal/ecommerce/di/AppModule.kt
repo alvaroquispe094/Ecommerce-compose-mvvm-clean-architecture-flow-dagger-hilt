@@ -2,7 +2,9 @@ package com.groupal.ecommerce.di
 
 import com.groupal.ecommerce.common.Constants
 import com.groupal.ecommerce.data.remote.MockApi
+import com.groupal.ecommerce.data.repository.CategoryRepository
 import com.groupal.ecommerce.data.repository.ProductRepository
+import com.groupal.ecommerce.domain.dao.CategoryDao
 import com.groupal.ecommerce.domain.dao.ProductDao
 import dagger.Module
 import dagger.Provides
@@ -30,6 +32,12 @@ object AppModule {
     @Singleton
     fun provideCoinRepository(api: MockApi): ProductDao {
         return ProductRepository(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCategoryRepository(api: MockApi): CategoryDao {
+        return CategoryRepository(api)
     }
 
 }

@@ -9,7 +9,7 @@ class CategoryDto (
 )
 
 // Just like a mapper
-fun CategoryDto.toCoin(): Category {
+fun CategoryDto.toCategory(): Category {
     return Category(
         category = category,
         path = path

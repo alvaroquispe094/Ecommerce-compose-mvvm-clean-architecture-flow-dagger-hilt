@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">#FFFF</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.App.Starting" parent="Theme.AppCompat.NoActionBar">
 
-        <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="windowSplashScreenBackground">#FFEB3B</item>
 
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen</item>
+        <item name="android:windowBackground">@drawable/ic_splash_screen</item>
+
+        <!--color bottom navigation-->
+        <item name="android:navigationBarColor">@color/white</item>
+
+        <!--desactivado para que sea blanco el color del top bar-->
+        <item name="android:windowLightStatusBar">true</item>
 
         <item name="postSplashScreenTheme">@style/Theme.Ecommerce</item>
+
+        <!--color del topBar del splash screen-->
+        <item name="android:statusBarColor">@android:color/white</item>
+
     </style>
 </resources>

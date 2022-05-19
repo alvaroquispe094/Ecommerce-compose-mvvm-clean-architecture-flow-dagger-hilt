@@ -16,7 +16,7 @@ data class ProductDto(
 )
 
 // Just like a mapper
-fun ProductDto.toCoin(): Product {
+fun ProductDto.toProduct(): Product {
     return Product(
         id = id,
         title = title,
