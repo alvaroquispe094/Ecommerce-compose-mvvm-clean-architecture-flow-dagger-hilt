@@ -36,7 +36,7 @@ import com.groupal.ecommerce.presentation.theme.White
 fun ProductDetailScreen (
     openDrawer: () -> Unit,
     homeUiState: HomeScreenState,
-    homeViewModel: HomeViewModel = hiltViewModel(),
+    homeViewModel: HomeViewModel,
 ) {
     val scaffoldState = rememberScaffoldState()
     Scaffold(

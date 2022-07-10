@@ -11,6 +11,7 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.groupal.ecommerce.presentation.home.components.HomeContentScreen
 import com.groupal.ecommerce.presentation.navigation.TopBarNavigation
 

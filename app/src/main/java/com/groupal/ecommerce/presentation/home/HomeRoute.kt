@@ -17,7 +17,7 @@ fun HomeRoute(
     homeViewModel: HomeViewModel = hiltViewModel(),
     openDrawer: () -> Unit,
 ) {
-    // UiState of the HomeScreen, escucha todo los que se actualize en state y redibuja todo a partir de aquís
+    // UiState of the HomeScreen, escucha todo los que se actualize en state y redibuja todo a partir de aquí
     val state by homeViewModel.state.collectAsState()
 
     //actualiza los productos
@@ -33,7 +33,7 @@ fun HomeRoute(
         }
         //pantalla de detalle de producto seleccionado
         HomeScreenEnum.ArticleDetails -> {
-            ProductDetailScreen(openDrawer,state)
+            ProductDetailScreen(openDrawer, state, homeViewModel)
         }
 
         else -> {

@@ -9,6 +9,8 @@ import androidx.navigation.NavHostController
 object EcommerceDestinations {
     const val HOME_ROUTE = "home"
     const val INTERESTS_ROUTE = "interests"
+
+    const val LOGIN_ROUTE = "login"
 }
 
 /**
@@ -32,6 +34,15 @@ class NavigationActions(navController: NavHostController) {
     }
     val navigateToInterests: () -> Unit = {
         navController.navigate(EcommerceDestinations.INTERESTS_ROUTE) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigateToLogin: () -> Unit = {
+        navController.navigate(EcommerceDestinations.LOGIN_ROUTE) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true
             }

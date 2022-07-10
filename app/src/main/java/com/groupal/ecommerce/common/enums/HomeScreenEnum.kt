@@ -11,5 +11,7 @@ package com.groupal.ecommerce.common.enums
 enum class HomeScreenEnum {
     FeedWithArticleDetails,
     Feed,
-    ArticleDetails
+    ArticleDetails,
+    Home,
+    Login
 }

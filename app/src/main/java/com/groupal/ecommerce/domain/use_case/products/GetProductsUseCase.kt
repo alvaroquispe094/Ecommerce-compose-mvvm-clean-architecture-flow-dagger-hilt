@@ -16,7 +16,7 @@ class GetProductsUseCase  @Inject constructor(
     operator fun invoke(): Flow<Resource<List<Product>>> = flow {
         try {
             emit(Resource.Loading<List<Product>>())
-            val coins = repository.getProducts().map { it.toProduct() }
+             val coins = repository.getProducts().map { it.toProduct() }
             emit(Resource.Success(coins))
         } catch(e: HttpException) {
             emit(Resource.Error<List<Product>>(e.localizedMessage ?: "An unexpected error occured"))
