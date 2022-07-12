@@ -1,7 +1,7 @@
-package com.groupal.ecommerce.domain.dao
+package com.groupal.ecommerce.domain.repository
 
 import com.groupal.ecommerce.data.remote.dto.CategoryDto
 
-interface CategoryDao {
+interface ICategory {
     suspend fun getCategories(): List<CategoryDto>
 }

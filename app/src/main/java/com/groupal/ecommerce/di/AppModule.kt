@@ -4,8 +4,8 @@ import com.groupal.ecommerce.common.Constants
 import com.groupal.ecommerce.data.remote.MockApi
 import com.groupal.ecommerce.data.repository.CategoryRepository
 import com.groupal.ecommerce.data.repository.ProductRepository
-import com.groupal.ecommerce.domain.dao.CategoryDao
-import com.groupal.ecommerce.domain.dao.ProductDao
+import com.groupal.ecommerce.domain.repository.ICategory
+import com.groupal.ecommerce.domain.repository.IProduct
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,13 +30,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCoinRepository(api: MockApi): ProductDao {
+    fun provideCoinRepository(api: MockApi): IProduct {
         return ProductRepository(api)
     }
 
     @Provides
     @Singleton
-    fun provideCategoryRepository(api: MockApi): CategoryDao {
+    fun provideCategoryRepository(api: MockApi): ICategory {
         return CategoryRepository(api)
     }
 

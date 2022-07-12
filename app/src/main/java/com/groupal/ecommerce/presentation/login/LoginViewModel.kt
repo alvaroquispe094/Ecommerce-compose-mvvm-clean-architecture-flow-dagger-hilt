@@ -3,13 +3,8 @@ package com.groupal.ecommerce.presentation.login
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.groupal.ecommerce.common.Resource
 import com.groupal.ecommerce.domain.model.Product
-import com.groupal.ecommerce.domain.use_case.categories.GetCategoriesUseCase
-import com.groupal.ecommerce.domain.use_case.products.GetProductUseCase
 import com.groupal.ecommerce.domain.use_case.products.GetProductsUseCase
-import com.groupal.ecommerce.presentation.home.HomeScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
