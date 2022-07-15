@@ -11,7 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.groupal.ecommerce.presentation.home.HomeRoute
-import com.groupal.ecommerce.presentation.login.LoginRoute
+import com.groupal.ecommerce.presentation.auth.LoginRoute
 
 @Composable
 fun NavGraphScreen(
