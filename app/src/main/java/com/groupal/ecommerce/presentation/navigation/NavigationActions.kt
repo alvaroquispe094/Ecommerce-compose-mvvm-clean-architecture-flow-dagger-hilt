@@ -1,4 +1,4 @@
-package com.groupal.ecommerce.presentation
+package com.groupal.ecommerce.presentation.navigation
 
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -11,6 +11,7 @@ object EcommerceDestinations {
     const val INTERESTS_ROUTE = "interests"
 
     const val LOGIN_ROUTE = "login"
+    const val SIGNUP_ROUTE = "signup"
 }
 
 /**
@@ -18,7 +19,7 @@ object EcommerceDestinations {
  */
 class NavigationActions(navController: NavHostController) {
     val navigateToHome: () -> Unit = {
-        navController.navigate(EcommerceDestinations.HOME_ROUTE) {
+        navController.navigate(NavigationScreens.Main.route) {
             // Pop up to the start destination of the graph to
             // avoid building up a large stack of destinations
             // on the back stack as users select items
@@ -29,15 +30,6 @@ class NavigationActions(navController: NavHostController) {
             // reselecting the same item
             launchSingleTop = true
             // Restore state when reselecting a previously selected item
-            restoreState = true
-        }
-    }
-    val navigateToInterests: () -> Unit = {
-        navController.navigate(EcommerceDestinations.INTERESTS_ROUTE) {
-            popUpTo(navController.graph.findStartDestination().id) {
-                saveState = true
-            }
-            launchSingleTop = true
             restoreState = true
         }
     }

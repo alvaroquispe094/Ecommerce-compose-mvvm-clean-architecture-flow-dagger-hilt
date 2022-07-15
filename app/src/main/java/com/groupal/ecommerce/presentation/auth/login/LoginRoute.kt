@@ -14,24 +14,24 @@ fun LoginRoute(
     // UiState of the HomeScreen, escucha todo los que se actualize en state y redibuja todo a partir de aquí
     val state by loginViewModel.state.collectAsState()
 
-//    when (getLoginScreenType(isExpandedScreen, state)) {
-//        //pantalla principal de home
-//        HomeScreenEnum.Login -> {
+    when (getLoginScreenType(state)) {
+        //pantalla principal de home
+        HomeScreenEnum.Login -> {
             LoginScreen(state,loginViewModel, navigateToHome)
-//        }
-//        //pantalla de registro
-//        HomeScreenEnum.Register -> {
-////            RegisterScreen(openDrawer,state,loginViewModel, navigateToHome)
-//        }
+        }
+        //pantalla de registro
+        HomeScreenEnum.Register -> {
+//            RegisterScreen(openDrawer,state,loginViewModel, navigateToHome)
+        }
 //        //pantalla de detalle de producto seleccionado
-//        HomeScreenEnum.Home -> {
-//            navigateToHome()
-//        }
-//
-//        else -> {
-//            LoginScreen(openDrawer, state, loginViewModel, navigateToHome)
-//        }
-//    }
+        HomeScreenEnum.Home -> {
+            navigateToHome()
+        }
+
+        else -> {
+            LoginScreen(state,loginViewModel, navigateToHome)
+        }
+    }
 }
 
 /**
@@ -40,23 +40,11 @@ fun LoginRoute(
  */
 @Composable
 private fun getLoginScreenType(
-    isExpandedScreen: Boolean,
     state: LoginUiState
-): HomeScreenEnum = when (isExpandedScreen) {
-    //si no esta en landscape
-    false -> {
-        if (state.isLoginOpen) {
-            HomeScreenEnum.Login
-        } else {
-            HomeScreenEnum.Home
-        }
-    }// si esta en landscape, cambiar logica para visualizar de otra manera
-    true -> {
-        if (state.isLoginOpen) {
-            HomeScreenEnum.Login
-        } else {
-            HomeScreenEnum.Home
-        }
+): HomeScreenEnum {
+    return if(state.isLoginOpen) {
+        HomeScreenEnum.Login
+    } else {
+        HomeScreenEnum.Home
     }
-
 }

@@ -1,4 +1,4 @@
-package com.groupal.ecommerce.presentation.navigation
+package com.groupal.ecommerce.presentation.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
@@ -25,7 +25,7 @@ import com.groupal.ecommerce.presentation.theme.White
 
 @Composable
 fun TopBarNavigation(
-    openDrawer: () -> Unit
+//    openDrawer: () -> Unit
 ) {
     TopAppBar(
         backgroundColor  = White,
@@ -33,13 +33,13 @@ fun TopBarNavigation(
             .border(BorderStroke(0.dp, Color.White))
             .shadow(0.dp)
     ){
-        CompositionLocalProvider(
-            LocalContentAlpha provides ContentAlpha.high
-        ) {
-            IconButton(onClick = openDrawer) {
-                Icon(imageVector = Icons.Filled.Menu, contentDescription = "Abrir menú",tint = Purple500)
-            }
-        }
+//        CompositionLocalProvider(
+//            LocalContentAlpha provides ContentAlpha.high
+//        ) {
+//            IconButton(onClick = openDrawer) {
+//                Icon(imageVector = Icons.Filled.Menu, contentDescription = "Abrir menú",tint = Purple500)
+//            }
+//        }
 
         CompositionLocalProvider(
             LocalContentAlpha provides ContentAlpha.high,

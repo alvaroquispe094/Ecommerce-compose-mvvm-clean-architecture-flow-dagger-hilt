@@ -13,5 +13,6 @@ enum class HomeScreenEnum {
     Feed,
     ArticleDetails,
     Home,
-    Login
+    Login,
+    Register
 }

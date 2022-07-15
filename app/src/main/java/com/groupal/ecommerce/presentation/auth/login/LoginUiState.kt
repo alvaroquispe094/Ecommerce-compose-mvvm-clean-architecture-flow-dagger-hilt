@@ -1,4 +1,4 @@
-package com.groupal.ecommerce.presentation.login
+package com.groupal.ecommerce.presentation.auth.login
 
 data class LoginUiState (
     val isLoginOpen: Boolean = true,

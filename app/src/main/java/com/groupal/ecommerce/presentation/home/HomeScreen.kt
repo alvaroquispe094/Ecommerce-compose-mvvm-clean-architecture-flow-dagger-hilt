@@ -6,18 +6,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.groupal.ecommerce.presentation.home.components.HomeContentScreen
-import com.groupal.ecommerce.presentation.navigation.TopBarNavigation
+import com.groupal.ecommerce.presentation.components.TopBarNavigation
 
 @Composable
 fun HomeScreen(
-    openDrawer: () -> Unit,
     homeUiState: HomeScreenState,
     homeViewModel: HomeViewModel,
     homeListLazyListState: LazyListState,
@@ -29,7 +26,7 @@ fun HomeScreen(
         topBar = {
             // top bar nav screen
             TopBarNavigation(
-                openDrawer = openDrawer
+//                openDrawer = openDrawer
             )
         }
     ) {contentPadding ->

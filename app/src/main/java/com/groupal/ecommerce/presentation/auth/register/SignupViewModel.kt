@@ -1,4 +1,4 @@
-package com.groupal.ecommerce.presentation.auth.login
+package com.groupal.ecommerce.presentation.auth.register
 
 import android.content.ContentValues.TAG
 import android.util.Log
@@ -10,39 +10,30 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(
+class SignupViewModel @Inject constructor(
     private val getProductsUseCase: GetProductsUseCase,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(LoginUiState())
-    val state: StateFlow<LoginUiState> = _state
+    private val _state = MutableStateFlow(SignupUiState())
+    val state: StateFlow<SignupUiState> = _state
 
     fun init(){
 
     }
 
-    fun login(user: String, password: String) {
+    fun register(name: String, surname: String, user: String, password: String, address: String) {
         Log.i(TAG, "IS Login")
         Log.i(TAG, user)
         Log.i(TAG, password)
 
         _state.update {
             it.copy(
-                isLoginOpen = false,
+                isRegisterOpen = false,
                 isLoading = false
             )
         }
 
 //        navigateToHome()
-    }
-
-    fun goToRegister(){
-        _state.update {
-            it.copy(
-                isLoginOpen = false,
-                isLoading = false
-            )
-        }
     }
 
     /**

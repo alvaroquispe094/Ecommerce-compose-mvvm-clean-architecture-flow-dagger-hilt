@@ -34,7 +34,6 @@ import com.groupal.ecommerce.presentation.theme.White
 
 @Composable
 fun ProductDetailScreen (
-    openDrawer: () -> Unit,
     homeUiState: HomeScreenState,
     homeViewModel: HomeViewModel,
 ) {

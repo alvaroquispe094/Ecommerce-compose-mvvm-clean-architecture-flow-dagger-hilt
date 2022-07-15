@@ -13,9 +13,7 @@ import com.groupal.ecommerce.presentation.home.components.ProductDetailScreen
 
 @Composable
 fun HomeRoute(
-    isExpandedScreen: Boolean,
-    homeViewModel: HomeViewModel = hiltViewModel(),
-    openDrawer: () -> Unit,
+    homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     // UiState of the HomeScreen, escucha todo los que se actualize en state y redibuja todo a partir de aquí
     val state by homeViewModel.state.collectAsState()
@@ -26,18 +24,18 @@ fun HomeRoute(
 
     // pasar variable para mantener el estado del scroll de la lista al volver
     val homeListLazyListState = rememberLazyListState()
-    when (getHomeScreenType(isExpandedScreen, state)) {
+    when (getHomeScreenType(state)) {
         //pantalla principal de home
         HomeScreenEnum.Feed -> {
-            HomeScreen(openDrawer,state,homeViewModel, homeListLazyListState)
+            HomeScreen(state,homeViewModel, homeListLazyListState)
         }
         //pantalla de detalle de producto seleccionado
         HomeScreenEnum.ArticleDetails -> {
-            ProductDetailScreen(openDrawer, state, homeViewModel)
+            ProductDetailScreen(state, homeViewModel)
         }
 
         else -> {
-            HomeScreen(openDrawer,state,homeViewModel,homeListLazyListState)
+            HomeScreen(state,homeViewModel,homeListLazyListState)
         }
     }
 }
@@ -48,23 +46,14 @@ fun HomeRoute(
  */
 @Composable
 private fun getHomeScreenType(
-    isExpandedScreen: Boolean,
     state: HomeScreenState
-): HomeScreenEnum = when (isExpandedScreen) {
-    //si no esta en landscape
-    false -> {
-        if (state.isProductOpen) {
-            HomeScreenEnum.ArticleDetails
-        } else {
-            HomeScreenEnum.Feed
-        }
-    }// si esta en landscape, cambiar logica para visualizar de otra manera
-    true -> {
-        if (state.isProductOpen) {
-            HomeScreenEnum.ArticleDetails
-        } else {
-            HomeScreenEnum.Feed
-        }
+): HomeScreenEnum{
+
+    return if (state.isProductOpen) {
+        HomeScreenEnum.ArticleDetails
+    } else {
+        HomeScreenEnum.Feed
     }
+
 
 }
