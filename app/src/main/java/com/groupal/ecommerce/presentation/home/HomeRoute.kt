@@ -13,7 +13,8 @@ import com.groupal.ecommerce.presentation.home.components.ProductDetailScreen
 
 @Composable
 fun HomeRoute(
-    homeViewModel: HomeViewModel = hiltViewModel()
+    homeViewModel: HomeViewModel = hiltViewModel(),
+    navigateToLogin: () -> Unit,
 ) {
     // UiState of the HomeScreen, escucha todo los que se actualize en state y redibuja todo a partir de aquí
     val state by homeViewModel.state.collectAsState()
@@ -24,10 +25,12 @@ fun HomeRoute(
 
     // pasar variable para mantener el estado del scroll de la lista al volver
     val homeListLazyListState = rememberLazyListState()
+
+    val scaffoldState = rememberScaffoldState()
     when (getHomeScreenType(state)) {
         //pantalla principal de home
         HomeScreenEnum.Feed -> {
-            HomeScreen(state,homeViewModel, homeListLazyListState)
+            HomeScreen(state,homeViewModel, homeListLazyListState,navigateToLogin,scaffoldState)
         }
         //pantalla de detalle de producto seleccionado
         HomeScreenEnum.ArticleDetails -> {
@@ -35,7 +38,7 @@ fun HomeRoute(
         }
 
         else -> {
-            HomeScreen(state,homeViewModel,homeListLazyListState)
+            HomeScreen(state, homeViewModel, homeListLazyListState, navigateToLogin, scaffoldState)
         }
     }
 }

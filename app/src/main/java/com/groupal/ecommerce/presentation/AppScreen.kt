@@ -7,26 +7,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.groupal.ecommerce.presentation.navigation.BottomNavigationScreens
 import com.groupal.ecommerce.presentation.navigation.MainNavigation
+import com.groupal.ecommerce.presentation.navigation.NavigationActions
 import com.groupal.ecommerce.presentation.navigation.bottomNavigationItems
 
 @Composable
 fun AppScreen(
-    authNavController: NavController
+    authNavController: NavHostController,
+    scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
 
     val navController = rememberNavController()
 
     Scaffold(
-        topBar = {
-            TitleBar(navController, bottomNavigationItems)
-        },
+        scaffoldState = scaffoldState,
+//        topBar = {
+//            TitleBar(navController, bottomNavigationItems)
+//        },
         content = { contentPadding ->
-            MainNavigation(navController = navController, contentPadding) },
+            MainNavigation(authController = authNavController, navController = navController, contentPadding) },
         bottomBar = {
             BottomNav(navController, bottomNavigationItems)
         }
@@ -65,7 +69,14 @@ fun BottomNav(navController: NavHostController, items: List<BottomNavigationScre
                 label = { Text(text = screen.label) },
                 onClick = {
                     if (currentRoute != screen.route) {
-                        navController.navigate(screen.route)
+                        navController.navigate(screen.route){
+                            //para guardar el estado al volver a elegir el menu bottom
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
                     }
                 }
             )

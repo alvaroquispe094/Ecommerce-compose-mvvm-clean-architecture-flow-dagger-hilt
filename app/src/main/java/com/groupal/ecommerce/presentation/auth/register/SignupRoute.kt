@@ -3,22 +3,30 @@ package com.groupal.ecommerce.presentation.auth.register
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.groupal.ecommerce.common.enums.HomeScreenEnum
 import com.groupal.ecommerce.presentation.auth.login.LoginUiState
+import com.groupal.ecommerce.presentation.navigation.NavigationActions
 
 @Composable
 fun SignupRoute(
-    signupViewModel: SignupViewModel = hiltViewModel(),
-    navigateToHome: () -> Unit,
+    navController: NavHostController,
+    signupViewModel: SignupViewModel = hiltViewModel()
 ) {
     // UiState of the HomeScreen, escucha todo los que se actualize en state y redibuja todo a partir de aquí
     val state by signupViewModel.state.collectAsState()
 
+    //Navigate to screen selected
+    val navigationActions = NavigationActions(navController)
+
+
 //    when (getLoginScreenType(isExpandedScreen, state)) {
 //        //pantalla principal de home
 //        HomeScreenEnum.Login -> {
-            SignupScreen(state,signupViewModel, navigateToHome)
+            SignupScreen(state,signupViewModel, navigationActions.navigateToLogin)
 //        }
 //        //pantalla de registro
 //        HomeScreenEnum.Register -> {

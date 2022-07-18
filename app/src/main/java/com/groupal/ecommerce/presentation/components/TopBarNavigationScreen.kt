@@ -26,6 +26,7 @@ import com.groupal.ecommerce.presentation.theme.White
 @Composable
 fun TopBarNavigation(
 //    openDrawer: () -> Unit
+    navigateToLogin: () -> Unit,
 ) {
     TopAppBar(
         backgroundColor  = White,
@@ -33,13 +34,17 @@ fun TopBarNavigation(
             .border(BorderStroke(0.dp, Color.White))
             .shadow(0.dp)
     ){
-//        CompositionLocalProvider(
-//            LocalContentAlpha provides ContentAlpha.high
-//        ) {
-//            IconButton(onClick = openDrawer) {
-//                Icon(imageVector = Icons.Filled.Menu, contentDescription = "Abrir menú",tint = Purple500)
-//            }
-//        }
+        CompositionLocalProvider(
+            LocalContentAlpha provides ContentAlpha.high
+        ) {
+            //logout button
+            TextButton(
+                onClick = { navigateToLogin() },
+                border = BorderStroke(width = 5.dp, color = Color.Green)
+            ) {
+                Text(text = "Logout")
+            }
+        }
 
         CompositionLocalProvider(
             LocalContentAlpha provides ContentAlpha.high,

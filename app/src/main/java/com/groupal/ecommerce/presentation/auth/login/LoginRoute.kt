@@ -4,32 +4,45 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.groupal.ecommerce.common.enums.HomeScreenEnum
 
 @Composable
 fun LoginRoute(
     loginViewModel: LoginViewModel = hiltViewModel(),
     navigateToHome: () -> Unit,
+    navigateToSignup: () -> Unit,
+
 ) {
     // UiState of the HomeScreen, escucha todo los que se actualize en state y redibuja todo a partir de aquí
     val state by loginViewModel.state.collectAsState()
 
+    //Navigate to screen selected
+//    val navigationActions = NavigationActions(navController)
+
+//    val navigationActions = remember(navController) {
+//        NavigationActions(navController)
+//    }
+
     when (getLoginScreenType(state)) {
         //pantalla principal de home
         HomeScreenEnum.Login -> {
-            LoginScreen(state,loginViewModel, navigateToHome)
+            LoginScreen(state,loginViewModel,navigateToHome,navigateToSignup)
         }
         //pantalla de registro
         HomeScreenEnum.Register -> {
-//            RegisterScreen(openDrawer,state,loginViewModel, navigateToHome)
+            navigateToSignup()
         }
-//        //pantalla de detalle de producto seleccionado
+//        //pantalla Home main de la app
         HomeScreenEnum.Home -> {
+            //navigationActions.navigateToHome
             navigateToHome()
+//            navigationActions.navigateToHome
+//            navController.navigate(NavigationScreens.Main.route)
         }
 
         else -> {
-            LoginScreen(state,loginViewModel, navigateToHome)
+            LoginScreen(state,loginViewModel,navigateToHome,navigateToSignup)
         }
     }
 }

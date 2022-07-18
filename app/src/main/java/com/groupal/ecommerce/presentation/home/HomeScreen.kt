@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,15 +19,16 @@ fun HomeScreen(
     homeUiState: HomeScreenState,
     homeViewModel: HomeViewModel,
     homeListLazyListState: LazyListState,
+    navigateToLogin: () -> Unit,
+    scaffoldState: ScaffoldState,
 ) {
-    val scaffoldState = rememberScaffoldState()
     Scaffold(
         scaffoldState = scaffoldState,
         backgroundColor = Color(0xFFFFFFFF),
         topBar = {
             // top bar nav screen
             TopBarNavigation(
-//                openDrawer = openDrawer
+                navigateToLogin,
             )
         }
     ) {contentPadding ->

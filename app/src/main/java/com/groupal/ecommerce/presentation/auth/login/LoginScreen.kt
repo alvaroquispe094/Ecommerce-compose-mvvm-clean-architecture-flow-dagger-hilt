@@ -21,6 +21,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 import com.groupal.ecommerce.presentation.theme.Purple700
 
@@ -29,6 +30,7 @@ fun LoginScreen(
     loginUiState: LoginUiState,
     loginViewModel: LoginViewModel,
     navigateToHome: () -> Unit,
+    navigateToSignup: () -> Unit,
 ){
     val text = buildAnnotatedString {
         append("Don't have an account?")
@@ -50,7 +52,7 @@ fun LoginScreen(
         modifier = Modifier
             .align(Alignment.BottomCenter)
             .padding(20.dp),
-        onClick = { },
+        onClick = { navigateToSignup() },
         style = TextStyle(
             fontSize = 14.sp,
             fontFamily = FontFamily.Default,

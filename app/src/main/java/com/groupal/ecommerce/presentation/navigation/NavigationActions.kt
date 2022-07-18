@@ -18,6 +18,24 @@ object EcommerceDestinations {
  * Models the navigation actions in the app.
  */
 class NavigationActions(navController: NavHostController) {
+    val navigateToLogin: () -> Unit = {
+        navController.navigate(NavigationScreens.Login.route) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
+    val navigateToSignup: () -> Unit = {
+        navController.navigate(NavigationScreens.Signup.route) {
+            popUpTo(navController.graph.findStartDestination().id) {
+                saveState = true
+            }
+            launchSingleTop = true
+            restoreState = true
+        }
+    }
     val navigateToHome: () -> Unit = {
         navController.navigate(NavigationScreens.Main.route) {
             // Pop up to the start destination of the graph to
@@ -30,15 +48,6 @@ class NavigationActions(navController: NavHostController) {
             // reselecting the same item
             launchSingleTop = true
             // Restore state when reselecting a previously selected item
-            restoreState = true
-        }
-    }
-    val navigateToLogin: () -> Unit = {
-        navController.navigate(EcommerceDestinations.LOGIN_ROUTE) {
-            popUpTo(navController.graph.findStartDestination().id) {
-                saveState = true
-            }
-            launchSingleTop = true
             restoreState = true
         }
     }

@@ -27,7 +27,7 @@ import com.groupal.ecommerce.presentation.theme.Purple700
 fun SignupScreen(
     registerUiState: SignupUiState,
     registerViewModel: SignupViewModel,
-    navigateToHome: () -> Unit,
+    navigateToLogin: () -> Unit,
 ){
     Box(modifier = Modifier.fillMaxSize()) {
     ClickableText(
@@ -35,7 +35,7 @@ fun SignupScreen(
         modifier = Modifier
             .align(Alignment.BottomCenter)
             .padding(20.dp),
-        onClick = { },
+        onClick = { navigateToLogin() },
         style = TextStyle(
             fontSize = 14.sp,
             fontFamily = FontFamily.Default,

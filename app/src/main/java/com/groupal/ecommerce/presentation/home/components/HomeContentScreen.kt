@@ -1,13 +1,16 @@
 package com.groupal.ecommerce.presentation.home.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -19,17 +22,20 @@ fun HomeContentScreen(
     homeUiState: HomeScreenState,
     homeViewModel: HomeViewModel,
     state: LazyListState = rememberLazyListState(),
+
 ){
     // Screen home content
     Box(modifier = Modifier
         .padding(8.dp)) {
 
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize()
+                .navigationBarsPadding(),
             state = state
         ) {
             //agrega un item al principio antes de dibujar la lista de items
             if (homeUiState.labels) {
+
                 item {
                     Text(
                         text = "Categories",

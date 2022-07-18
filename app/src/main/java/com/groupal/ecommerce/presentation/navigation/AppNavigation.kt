@@ -28,17 +28,18 @@ fun AppNavigation(
             // Screen content
             LoginRoute(
                 navigateToHome = navigationActions.navigateToHome,
+                navigateToSignup = navigationActions.navigateToSignup,
             )
         }
         composable(NavigationScreens.Signup.route) {
             // Screen content
             SignupRoute(
-                navigateToHome = navigationActions.navigateToHome
+                navController
             )
         }
         composable(NavigationScreens.Main.route) {
             // Screen content
-            AppScreen(navController)
+            AppScreen(authNavController = navController)
         }
     }
 }
