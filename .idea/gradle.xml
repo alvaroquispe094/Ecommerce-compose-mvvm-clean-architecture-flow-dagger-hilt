@@ -12,6 +12,23 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/modules" />
+            <option value="$PROJECT_DIR$/modules/configuration" />
+            <option value="$PROJECT_DIR$/modules/configuration/configuration" />
+            <option value="$PROJECT_DIR$/modules/configuration/configuration-data-local" />
+            <option value="$PROJECT_DIR$/modules/configuration/configuration-data-network" />
+            <option value="$PROJECT_DIR$/modules/product" />
+            <option value="$PROJECT_DIR$/modules/product/product" />
+            <option value="$PROJECT_DIR$/modules/product/product-data" />
+            <option value="$PROJECT_DIR$/modules/product/product-presentation" />
+            <option value="$PROJECT_DIR$/modules/shared" />
+            <option value="$PROJECT_DIR$/modules/shared/shared" />
+            <option value="$PROJECT_DIR$/modules/shared/shared-data" />
+            <option value="$PROJECT_DIR$/modules/shared/shared-presentation" />
+            <option value="$PROJECT_DIR$/modules/user" />
+            <option value="$PROJECT_DIR$/modules/user/user" />
+            <option value="$PROJECT_DIR$/modules/user/user-data" />
+            <option value="$PROJECT_DIR$/modules/user/user-presentation" />
           </set>
         </option>
       </GradleProjectSettings>

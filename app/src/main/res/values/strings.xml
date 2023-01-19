@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ecommerce</string>
+    <string name="app_name_marketplace">Marketplace</string>
 </resources>

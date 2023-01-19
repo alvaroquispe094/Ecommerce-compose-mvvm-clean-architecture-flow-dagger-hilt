@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empty_field">Empty field</string>
+    <string name="format_url">Invalid format url image</string>
+    <string name="invalid_field">The field is invalid</string>
+</resources>

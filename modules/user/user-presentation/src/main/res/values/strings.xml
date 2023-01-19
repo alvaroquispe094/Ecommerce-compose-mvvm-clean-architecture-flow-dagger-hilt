@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_ic_success_accountcreated">icono success</string>
+    <string name="user_success_accountcreated">SUCCESS</string>
+    <string name="user_congrat_accountcreated">Congratulations, your account\nhas been successfully created.</string>
+    <string name="user_btn_go_to_login_accountcreated">GO TO LOGIN</string>
+
+    <string name="user_subtitle_login">Please sign in to continue</string>
+    <string name="user_title_login">Login</string>
+    <string name="user_username">USERNAME</string>
+    <string name="user_email">EMAIL</string>
+    <string name="user_ic_desc_mail_login">Login Mail</string>
+    <string name="user_password">PASSWORD</string>
+    <string name="user_ic_desc_login_pass">Login Password</string>
+    <string name="user_forgot_login">Forgot</string>
+    <string name="user_btn_login">LOGIN</string>
+    <string name="user_body_sign_up">"Don't have an account? "</string>
+    <string name="user_sign_up">Sign up</string>
+    <string name="user_subtitle_signup">Please sign up to continue</string>
+    <string name="user_first_name_signup">FIRST NAME</string>
+    <string name="user_ic_desc_first_name_signup">Sign up first name</string>
+    <string name="user_last_name_signup">LAST NAME</string>
+    <string name="user_ic_desc_last_name_signup">Sign up last name</string>
+    <string name="user_ic_desc_email_signup">Sign up email</string>
+    <string name="user_confirm_password_signup">"CONFIRM PASSWORD "</string>z
+    <string name="user_gender_signup">GENDER</string>
+    <string name="user_ic_desc_gender_signup">Sign up gender</string>
+    <string name="user_male_signup">Male</string>
+    <string name="user_female_signup">Female</string>
+    <string name="user_birth_date_signup">BIRTH DATE</string>
+    <string name="user_url_image_signup">URL IMAGE</string>
+    <string name="user_ic_desc_url_image_signup">Sign up url image</string>
+    <string name="user_phone_signup">PHONE</string>
+    <string name="user_ic_desc_phone_signup">Sign up phone</string>
+    <string name="user_signup">SIGN UP</string>
+</resources>

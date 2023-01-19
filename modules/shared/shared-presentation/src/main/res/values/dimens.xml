@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cell_min_width">150dp</dimen>
+    <dimen name="cell_thumb_height">200dp</dimen>
+    <dimen name="cell_play_icon_size">92dp</dimen>
+
+    <dimen name="padding_xxsmall">4dp</dimen>
+    <dimen name="padding_xsmall">8dp</dimen>
+    <dimen name="padding_small">10dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">20dp</dimen>
+    <dimen name="padding_xlarge">24dp</dimen>
+    <dimen name="padding_xxlarge">36dp</dimen>
+
+    <dimen name="fontsize_xxsmall">14dp</dimen>
+    <dimen name="fontsize_xsmall">16dp</dimen>
+    <dimen name="fontsize_small">18dp</dimen>
+    <dimen name="fontsize_medium">20dp</dimen>
+    <dimen name="fontsize_large">24dp</dimen>
+    <dimen name="fontsize_xlarge">34dp</dimen>
+
+    <dimen name="btn_RoundedCornerShape_small">8dp</dimen>
+    <dimen name="btn_RoundedCornerShape_medium">16dp</dimen>
+    <dimen name="btn_defaultElevation_medium">6dp</dimen>
+    <dimen name="btn_pressedElevation_medium">8dp</dimen>
+    <dimen name="btn_disabledElevation">0dp</dimen>
+
+    <dimen name="space_height_xsmall">8dp</dimen>
+    <dimen name="space_height_small">30dp</dimen>
+    <dimen name="space_height_medium">32dp</dimen>
+    <dimen name="space_height_large">36dp</dimen>
+    <dimen name="space_height_xlarge">40dp</dimen>
+    <dimen name="space_height_xxlarge">52dp</dimen>
+    <dimen name="space_height_medium_f">1dp</dimen>
+
+
+    <dimen name="size_small">24dp</dimen>
+    <dimen name="size_medium">60dp</dimen>
+    <dimen name="shadow_medium">10dp</dimen>
+    <dimen name="requiredHeight_medium">28dp</dimen>
+    <dimen name="requiredWidth_medium">34dp</dimen>
+    <dimen name="thickness_medium">1dp</dimen>
+    <dimen name="width_medium">100dp</dimen>
+    <dimen name="height_medium">100dp</dimen>
+
+    <dimen name="alpha_small_f">0.2dp</dimen>
+    <dimen name="alpha_medium_f">1.0dp</dimen>
+    <dimen name="fillmaxwidth_medium_f">1dp</dimen>
+    <dimen name="fillmaxheight_small_f">0.53dp</dimen>
+    <dimen name="fillmaxheight_medium_f">1dp</dimen>
+</resources>
