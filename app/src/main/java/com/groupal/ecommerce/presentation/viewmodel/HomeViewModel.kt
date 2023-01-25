@@ -2,6 +2,7 @@ package com.groupal.ecommerce.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.groupal.configuration.ecommerce.service.ConfigurationService
 import com.groupal.product.ecommerce.domain.Product
 import com.groupal.product.ecommerce.service.ProductService
 import dagger.hilt.android.lifecycle.HiltViewModel

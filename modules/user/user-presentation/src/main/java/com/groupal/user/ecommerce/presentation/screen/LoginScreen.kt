@@ -18,6 +18,7 @@ import com.groupal.shared.ecommerce.presentation.theme.LocalTheme
 import com.groupal.user.ecommerce.domain.User
 import com.groupal.user.ecommerce.domain.UserValidation
 import com.groupal.user.ecommerce.presentation.viewmodel.AuthViewModel
+//import com.groupal.user.ecommerce.presentation.viewmodel.TokenViewModel
 import com.groupal.user_presentation.R
 import kotlinx.coroutines.launch
 
@@ -44,7 +45,7 @@ fun LoginScreen(
     val loginLoading by authViewModel.loginLoading.collectAsState()
     val coroutineScope = rememberCoroutineScope() //Scope para coroutines en composables
 
-    val isSignUpEnabled by authViewModel.isSignUpEnabled.collectAsState()
+//    val isSignUpEnabled by authViewModel.isSignUpEnabled.collectAsState()
 
     LaunchedEffect(loginError) { //TODO: No hacer efectos sobre el que los esta generando
         if (loginError != null) {
@@ -100,7 +101,7 @@ fun LoginScreen(
                 )
         },
         isLoginButtonEnable = isLoginButtonEnable,
-        isSignUpEnabled = isSignUpEnabled
+        isSignUpEnabled = true
     )
 }
 
@@ -199,7 +200,7 @@ private fun LoginContent(
 
             Spacer(modifier = Modifier.weight(1f))
 
-            if (isSignUpEnabled) {
+//            if (isSignUpEnabled) {
                 Row(Modifier.padding(bottom = LocalTheme.current.padding.small)) {
                     TextBody(
                         text = stringResource(R.string.user_body_sign_up)
@@ -210,7 +211,7 @@ private fun LoginContent(
                         onClick = { onSignUp() }
                     )
                 }
-            }
+//            }
 
         }
         if (signInLoading) {

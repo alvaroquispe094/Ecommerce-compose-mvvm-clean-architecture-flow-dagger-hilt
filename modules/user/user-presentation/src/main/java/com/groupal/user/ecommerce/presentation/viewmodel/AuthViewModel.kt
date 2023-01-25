@@ -24,10 +24,12 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     private val authService: AuthService,
     private val userService: UserService,
-    private val configurationService: ConfigurationService
+//    private val configurationService: ConfigurationService
 ) : ViewModel() {
 
     val loginSession: StateFlow<LoginResponse?> = authService.loginSession
+    val sessionToken: StateFlow<String?> = authService.tokenSession
+
     val loginError: StateFlow<String?> =
         authService.loginError.map { exception -> exception?.message }
             .stateIn(viewModelScope, SharingStarted.Eagerly, null)
@@ -54,10 +56,9 @@ class AuthViewModel @Inject constructor(
     private val _emailSearch = MutableStateFlow("")
     val emailSearch: StateFlow<String> = _emailSearch.asStateFlow()
 
-    val isSignUpEnabled: StateFlow<Boolean> = configurationService.configuration.map {
+    /*val isSignUpEnabled: StateFlow<Boolean> = configurationService.configuration.map {
         it.isSignUpEnable
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
-
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, false)*/
 
     init {
         viewModelScope.launch {

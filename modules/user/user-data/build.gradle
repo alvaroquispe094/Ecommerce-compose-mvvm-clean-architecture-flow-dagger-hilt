@@ -36,6 +36,7 @@ dependencies {
     implementation project(path: ':modules:shared:shared')
     implementation project(path: ':modules:shared:shared-data')
     implementation project(path: ':modules:user:user')
+    implementation project(path: ':modules:configuration:configuration-data-local')
 
     implementation "androidx.core:core-ktx:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_android_coroutines_version"
@@ -47,6 +48,13 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshi_version")
     implementation "com.squareup.moshi:moshi:$moshi_version"
+
+    //OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    //DATA-STORE-PREFERENCES
+    implementation("androidx.datastore:datastore-preferences:$datastore_version")
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$android_junit_version"

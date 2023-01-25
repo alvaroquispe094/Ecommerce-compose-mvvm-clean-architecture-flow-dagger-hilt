@@ -22,22 +22,50 @@ private enum class AuthRoute(val route: String) {
 private fun destinationByLoginSession(loginSession: LoginResponse?): AuthRoute =
     if (loginSession == null) AuthRoute.LogIn else AuthRoute.Authenticated
 
+private fun destinationByTokenSession(token: String?): AuthRoute =
+    if (token == null) AuthRoute.LogIn else AuthRoute.Authenticated
+
 
 @Composable
 fun AuthNavigation(
     loginViewModel: AuthViewModel = hiltViewModel(),
+//    tokenViewModel: TokenViewModel = hiltViewModel(),
     authenticated: @Composable (onLogout: () -> Unit) -> Unit,
 ) {
     val coroutineScope = rememberCoroutineScope()
     val navController = rememberNavController()
     val loginSession by loginViewModel.loginSession.collectAsState()
     val isSignUpOk by loginViewModel.isSignUpOk.collectAsState()
+    val sessionToken by loginViewModel.sessionToken.collectAsState()
 
-    LaunchedEffect(loginSession) {
-        if(loginSession != null) {
+    /*tokenViewModel.token.observe(viewLifecycleOwner) { token ->
+        if (token != null)
+            navController.navigate(R.id.action_loginFragment_to_main_nav_graph)
+    }*/
+
+    /*LaunchedEffect(loginSession) {
+        println("My token: $sessionToken")
+        if(loginSession != null *//*|| token?.isNotEmpty()!!*//*) {
+            tokenViewModel.saveToken(loginSession!!.accessToken)
+//            navController.navigate(AuthRoute.Authenticated.route)
+        }
+    }*/
+
+    LaunchedEffect(sessionToken) {
+        println("My token: $sessionToken")
+        if(sessionToken != null) {
+//            tokenViewModel.saveToken(loginSession!!.accessToken)
             navController.navigate(AuthRoute.Authenticated.route)
         } else {
+//
+            /*if (token != null){
+
+                navController.navigate(AuthRoute.Authenticated.route)
+            }else{*/
+//            tokenViewModel.deleteToken()
             navController.navigate(AuthRoute.LogIn.route)
+
+//            }
         }
     }
 
@@ -49,7 +77,7 @@ fun AuthNavigation(
 
     NavHost(
         navController = navController,
-        startDestination = destinationByLoginSession(loginSession).route
+        startDestination = destinationByTokenSession(sessionToken).route
     ) {
         composable(AuthRoute.LogIn.route) {
             LoginScreen {

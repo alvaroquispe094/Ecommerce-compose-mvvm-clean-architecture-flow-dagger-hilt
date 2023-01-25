@@ -43,6 +43,7 @@ dependencies {
     implementation project(path: ':modules:shared:shared-presentation')
     implementation project(path: ':modules:configuration:configuration')
     implementation project(path: ':modules:user:user')
+    implementation project(path: ':modules:user:user-data')
 
     implementation "androidx.core:core-ktx:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_android_coroutines_version"

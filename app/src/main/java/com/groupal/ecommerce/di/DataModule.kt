@@ -1,34 +1,30 @@
 package com.groupal.ecommerce.di
 
 import android.content.Context
-import com.groupal.configuration.ecommerce.data.IConfigurationLocalRepository
 import com.groupal.configuration.ecommerce.data.IConfigurationRepository
-import com.groupal.configuration.ecommerce.data.local.repository.ConfigurationLocalRepository
+import com.groupal.configuration.ecommerce.data.local.repository.TokenManager
 import com.groupal.configuration.ecommerce.data.network.ConfigurationEndpoint
 import com.groupal.configuration.ecommerce.data.network.repository.ConfigurationRepository
 import com.groupal.product.ecommerce.data.IProductRepository
 import com.groupal.product.ecommerce.data.network.ProductsEndpoint
 import com.groupal.product.ecommerce.repository.ProductRepository
-import com.groupal.shared.ecommerce.data.network.model.OAuthInterceptor
 import com.groupal.user.ecommerce.data.IAuthRepository
 import com.groupal.user.ecommerce.data.IUserRepository
 import com.groupal.user.ecommerce.data.network.AuthEndpoint
 import com.groupal.user.ecommerce.data.network.UsersEndpoint
 import com.groupal.user.ecommerce.data.repository.AuthRepository
 import com.groupal.user.ecommerce.data.repository.UserRepository
+import com.groupal.user.ecommerce.data.utils.AuthAuthenticator
+import com.groupal.user.ecommerce.data.utils.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.io.IOException
-import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -45,29 +41,29 @@ object DataModule {
     @Singleton
     @Provides
     @Named(PROVIDE_RETROFIT_AUTH_API)
-    fun provideRetrofitAuthAPI(): Retrofit {
-        return buildRetrofit("https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
+    fun provideRetrofitAuthAPI(okHttpClient: OkHttpClient,): Retrofit {
+        return buildRetrofit(okHttpClient,"https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
     }
 
     @Singleton
     @Provides
     @Named(PROVIDE_RETROFIT_USER_API)
-    fun provideRetrofitUserAPI(): Retrofit {
-        return buildRetrofit("https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
+    fun provideRetrofitUserAPI(okHttpClient: OkHttpClient,): Retrofit {
+        return buildRetrofit(okHttpClient,"https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
     }
 
     @Singleton
     @Provides
     @Named(PROVIDE_RETROFIT_CONFIGURATION_API)
-    fun provideRetrofitConfigurationAPI(): Retrofit {
-        return buildRetrofit("https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
+    fun provideRetrofitConfigurationAPI(okHttpClient: OkHttpClient,): Retrofit {
+        return buildRetrofit(okHttpClient,"https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
     }
 
     @Singleton
     @Provides
     @Named(PROVIDE_RETROFIT_PRODUCT_API)
-    fun provideRetrofitProductPI(): Retrofit {
-        return buildRetrofit("https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
+    fun provideRetrofitProductPI(okHttpClient: OkHttpClient,): Retrofit {
+        return buildRetrofit(okHttpClient,"https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
     }
 
     @Singleton
@@ -109,54 +105,61 @@ object DataModule {
     @Singleton
     @Provides
     fun provideProductRepository(productEndpoint: ProductsEndpoint): IProductRepository {
-        return ProductRepository(
-            productEndpoint
-        )
+        return ProductRepository(productEndpoint)
     }
 
     @Singleton
     @Provides
     fun provideConfigurationNetworkRepository(configurationEndpoint: ConfigurationEndpoint): IConfigurationRepository {
-        return ConfigurationRepository(
-            configurationEndpoint
-        )
+        return ConfigurationRepository(configurationEndpoint)
     }
 
     @Singleton
     @Provides
-    fun provideConfigurationLocalRepository(@ApplicationContext context: Context): IConfigurationLocalRepository {
-        return ConfigurationLocalRepository(
-            context = context
-        )
+    fun provideTokenManager(@ApplicationContext context: Context): TokenManager = TokenManager(context)
+
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(
+        authInterceptor: AuthInterceptor,
+        authAuthenticator: AuthAuthenticator,
+    ): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        return OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
+            .addInterceptor(loggingInterceptor)
+            .authenticator(authAuthenticator)
+            .build()
     }
 
-    /*val client = OkHttpClient.Builder()
-        .addInterceptor(OAuthInterceptor("Bearer", accessToken))
-        .build()
-    */
-   /* var client: OkHttpClient = OkHttpClient.Builder().addInterceptor(Interceptor { chain ->
-        val newRequest: Request = chain.request().newBuilder()
-            .addHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZ29uemFsZXpAZ21haWwuY29tIiwiaWF0IjoxNjczOTAzODc3LCJleHAiOjE2NzM5OTAyNzd9.5Seg0qtvCTLewPtf7aKR5FrERhKH3HCHFXfy3tMZHb06anxGUAmvN8KsD00xl4L-OpBnYzBZt2MwI7wH0Bwyxg")
-            .build()
-        chain.proceed(newRequest)
-    }).build()*/
+    @Singleton
+    @Provides
+    fun provideAuthInterceptor(tokenManager: TokenManager): AuthInterceptor =
+        AuthInterceptor(tokenManager)
 
-    val client =  OkHttpClient.Builder()
-        .addInterceptor(OAuthInterceptor("Bearer", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZ29uemFsZXpAZ21haWwuY29tIiwiaWF0IjoxNjc0MDU1NzA4LCJleHAiOjE2NzQxNDIxMDh9.EhvuIPRQM-6XMAaBZkp9wFi426zLpXuUCNpiqade4eGAHK8JENZcPAtIDCIg5YtenZp8QbR2FWj6UDOU1hPzDA"))
-        .build()
+    @Singleton
+    @Provides
+    fun provideAuthAuthenticator(tokenManager: TokenManager): AuthAuthenticator =
+        AuthAuthenticator(tokenManager)
 
-    private fun buildRetrofit(url: String): Retrofit {
-        val okHttpClient = OkHttpClient.Builder()
-            .connectTimeout(20, TimeUnit.SECONDS)
-            .writeTimeout(20, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .build();
+    @Singleton
+    @Provides
+    fun provideRetrofitBuilder(): Retrofit.Builder =
+        Retrofit.Builder()
+            .baseUrl("https://crazy-gun-production.up.railway.app")
+            .addConverterFactory(MoshiConverterFactory.create())
+
+
+    @Provides
+    fun buildRetrofit(okHttpClient: OkHttpClient, url: String): Retrofit {
 
         return Retrofit.Builder()
             .baseUrl(url)
-            .client(client)
+            .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
-            //.client(okHttpClient)
             .build()
 
         //TODO: Add client or interceptor Okhttp
