@@ -2,7 +2,6 @@ package com.groupal.user.ecommerce.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.groupal.configuration.ecommerce.service.ConfigurationService
 import com.groupal.user.ecommerce.domain.LoginResponse
 import com.groupal.user.ecommerce.domain.SignUpRequest
 import com.groupal.user.ecommerce.service.AuthService
@@ -18,6 +17,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel

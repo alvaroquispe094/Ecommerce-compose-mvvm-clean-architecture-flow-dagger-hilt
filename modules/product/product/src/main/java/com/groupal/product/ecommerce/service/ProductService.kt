@@ -26,6 +26,9 @@ class ProductService @Inject constructor(
     val products: StateFlow<List<Product>?> get() = productsFlow.asStateFlow()
     val error: StateFlow<Throwable?> get() = errorFlow.asStateFlow()
 
+    private val _homeLoading = MutableStateFlow(false)
+    val homeLoading: StateFlow<Boolean> = _homeLoading.asStateFlow()
+
     fun initialize() {
         MainScope().launch(dispatcher) {
             getProducts()
@@ -40,7 +43,9 @@ class ProductService @Inject constructor(
 
     fun refreshAllUsers() {
         MainScope().launch(dispatcher) {
+            _homeLoading.emit(true)
             getProducts()
+            _homeLoading.emit(false)
         }
     }
 

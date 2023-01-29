@@ -38,8 +38,7 @@ class AuthService @Inject constructor(
     val loginError: StateFlow<GenericException?> get() = _loginError.asStateFlow()
 
     //Token
-    private val _tokenSession = MutableStateFlow<String?>(null)
-    val tokenSession: StateFlow<String?> get() = _tokenSession.asStateFlow()
+    val tokenSession: StateFlow<String?> = tokenManager.tokenSession
 
     //Sign up
     private val _isSignUpOk = MutableStateFlow(false)
@@ -53,7 +52,7 @@ class AuthService @Inject constructor(
         try {
             val loginResponse = authRepository.login(username, password)
             tokenManager.saveToken(loginResponse.accessToken)
-            _tokenSession.emit(loginResponse.accessToken)
+            tokenManager.emitToken(loginResponse.accessToken)
             _loginSession.emit(loginResponse)
         } catch (e: GenericException) {
             logService.error("LOGIN", e.message.toString(), e.cause)
@@ -63,7 +62,7 @@ class AuthService @Inject constructor(
 
     suspend fun logout() {
         tokenManager.deleteToken()
-        _tokenSession.emit(null)
+        tokenManager.emitToken(null)
         _loginSession.emit(null)
     }
 
@@ -92,7 +91,7 @@ class AuthService @Inject constructor(
         try {
             val token = tokenManager.getToken().first()
             logService.info("Token: ", token.toString())
-            _tokenSession.emit(token)
+            tokenManager.emitToken(token)
 
         } catch (e: GenericException) {
             logService.error(" FAIL CONFIGURATION TOKEN", e.message.toString(), e.cause)

@@ -16,6 +16,7 @@ class AuthAuthenticator @Inject constructor(
 ): Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {
+
         val token = runBlocking {
             tokenManager.getToken().first()
         }
@@ -24,10 +25,12 @@ class AuthAuthenticator @Inject constructor(
 
             if (!newToken.isSuccessful || newToken.body() == null) { //Couldn't refresh the token, so restart the login process
                 tokenManager.deleteToken()
+                tokenManager.emitToken(null)
             }
 
             newToken.body()?.let {
                 tokenManager.saveToken(it.accessToken)
+                tokenManager.emitToken(it.accessToken)
                 response.request.newBuilder()
                     .header("Authorization", "Bearer ${it.accessToken}")
                     .build()

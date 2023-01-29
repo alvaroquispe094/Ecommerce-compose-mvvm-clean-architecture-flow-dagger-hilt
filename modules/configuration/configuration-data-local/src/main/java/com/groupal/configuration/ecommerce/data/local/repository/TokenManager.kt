@@ -16,9 +16,8 @@ class TokenManager(private val context: Context) {
         private val TOKEN_KEY = stringPreferencesKey("jwt_token")
     }
 
-    val configuration: Flow<String?> = context.dataStore.data.map { preferences ->
-        preferences[TOKEN_KEY]
-    }
+    private val _tokenSession = MutableStateFlow<String?>(null)
+    val tokenSession: StateFlow<String?> get() = _tokenSession.asStateFlow()
 
     fun getToken(): Flow<String?> {
         return context.dataStore.data.map { preferences ->
@@ -36,6 +35,10 @@ class TokenManager(private val context: Context) {
         context.dataStore.edit { preferences ->
             preferences.remove(TOKEN_KEY)
         }
+    }
+
+    suspend fun emitToken(tokenState: String?) {
+        _tokenSession.emit(tokenState)
     }
 
 }

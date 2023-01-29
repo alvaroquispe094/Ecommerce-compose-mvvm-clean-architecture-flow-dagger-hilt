@@ -84,6 +84,6 @@ private fun HomeContent(
 @Composable
 private fun UsersLoadingProgressIndicator() {
     Box(modifier = Modifier.fillMaxWidth()) {
-        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
     }
 }

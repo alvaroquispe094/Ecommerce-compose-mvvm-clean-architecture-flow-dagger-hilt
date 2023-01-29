@@ -25,8 +25,8 @@ class HomeViewModel @Inject constructor(
         .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
     val error: StateFlow<Throwable?> = productService.error
 
-    private val _homeLoading = MutableStateFlow(false)
-    val homeLoading: StateFlow<Boolean> get() = _homeLoading.asStateFlow()
+    //private val _homeLoading = MutableStateFlow(false)
+    val homeLoading: StateFlow<Boolean> get() = productService.homeLoading
 
     init{
         refresh()
@@ -34,7 +34,9 @@ class HomeViewModel @Inject constructor(
 
     fun refresh() {
         viewModelScope.launch(Dispatchers.IO) {
+            //_homeLoading.emit(true)
             productService.refreshAllUsers()
+            //_homeLoading.emit(false)
         }
     }
 }
