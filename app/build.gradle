@@ -115,6 +115,9 @@ dependencies {
     //DATA-STORE-PREFERENCES
     implementation("androidx.datastore:datastore-preferences:$datastore_version")
 
+    //Splash screen
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$android_junit_version"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
