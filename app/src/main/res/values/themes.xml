@@ -9,6 +9,7 @@
         <item name="android:windowLightStatusBar">true</item>
 
         <item name="android:background">@color/white</item>
+
     </style>
 
     <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen" >
