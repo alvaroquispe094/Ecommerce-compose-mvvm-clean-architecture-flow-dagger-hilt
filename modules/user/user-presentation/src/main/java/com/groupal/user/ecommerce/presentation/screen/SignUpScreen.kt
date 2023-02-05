@@ -1,14 +1,7 @@
 package com.groupal.user.ecommerce.presentation.screen
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.CircularProgressIndicator
@@ -31,15 +24,9 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.groupal.shared.ecommerce.presentation.components.GradientButton
-import com.groupal.shared.ecommerce.presentation.components.TextFieldGeneric
-import com.groupal.shared.ecommerce.presentation.components.TextFieldPassword
-import com.groupal.shared.ecommerce.presentation.components.TextSubTitle
-import com.groupal.shared.ecommerce.presentation.components.TextTitle
 import com.groupal.shared.ecommerce.domain.Image
 import com.groupal.shared.ecommerce.domain.SharedValidation
-import com.groupal.shared.ecommerce.presentation.components.DatePicker
-import com.groupal.shared.ecommerce.presentation.components.DropDownMenu
+import com.groupal.shared.ecommerce.presentation.components.*
 import com.groupal.shared.ecommerce.presentation.theme.LocalTheme
 import com.groupal.user.ecommerce.domain.SignUpRequest
 import com.groupal.user.ecommerce.domain.User
@@ -404,8 +391,9 @@ private fun SignUpContent( //TODO: Implementar clear all en inputs
                     )
                     Spacer(modifier = Modifier.height(LocalTheme.current.space.large))
 
-                    GradientButton(
+                    Button(
                         text = stringResource(R.string.user_signup),
+                        color = Color(0xFF2E31E4),
                         modifier = Modifier
                             .align(Alignment.End),
                         onClick = { onSignUp() },
@@ -415,31 +403,16 @@ private fun SignUpContent( //TODO: Implementar clear all en inputs
 
                     Spacer(modifier = Modifier.height(LocalTheme.current.space.large))
 
-                    ClickableText(
-                        text = buildAnnotatedString {
-                            withStyle(
-                                style = SpanStyle(
-                                    color = Color.Gray,
-                                    fontSize = LocalTheme.current.fontSize.xsmall,
-                                    fontWeight = FontWeight.W600
-                                )
-                            ) {
-                                append("Already have an account? ")
-                            }
-                            withStyle(
-                                style = SpanStyle(
-                                    color = Color(0xFFFF9700),
-                                    fontSize = LocalTheme.current.fontSize.xsmall,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            ) {
-                                append("Sign in")
-                            }
-                        },
-                        modifier = Modifier.padding(bottom = LocalTheme.current.padding.xlarge),
-                        onClick = { onSignIn() }
+                    Row(Modifier.padding(bottom = LocalTheme.current.padding.xlarge)) {
+                        TextBody(
+                            text = stringResource(R.string.user_body_sign_in)
+                        )
 
-                    )
+                        TextClickable(
+                            text = stringResource(R.string.user_sign_in),
+                            onClick = { onSignIn() }
+                        )
+                    }
 
                 }
             }

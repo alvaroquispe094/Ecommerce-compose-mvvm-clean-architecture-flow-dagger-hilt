@@ -1,11 +1,6 @@
 package com.groupal.ecommerce.presentation.screens.home
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
@@ -34,7 +29,12 @@ fun HomeScreen(
     val homeLoading by homeViewModel.homeLoading.collectAsState()
 
     val scaffoldState = rememberScaffoldState()
-    HomeContent(products = products, navigateToLogin = navigateToLogin, homeLoading = homeLoading, scaffoldState = scaffoldState)
+    HomeContent(
+        products = products,
+        navigateToLogin = navigateToLogin,
+        homeLoading = homeLoading,
+        scaffoldState = scaffoldState
+    )
 }
 
 @Composable
@@ -47,7 +47,7 @@ private fun HomeContent(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        backgroundColor = Color(0xFFFDFBFB),
+        backgroundColor = Color(0xFFFFFFFF),
         topBar = {
             HeaderScreen(
                 navigateToLogin,

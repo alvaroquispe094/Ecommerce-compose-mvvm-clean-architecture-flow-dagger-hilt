@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ecommerce</string>
-    <string name="app_name_marketplace">Marketplace</string>
+    <string name="app_name_marketplace">Presta Shop</string>
+    <string name="logo_description">Logo application</string>
 </resources>

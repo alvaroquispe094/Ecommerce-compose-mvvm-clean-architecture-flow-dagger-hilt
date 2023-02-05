@@ -15,7 +15,7 @@ fun TextClickable(
 ) {
     Text(
         text = text,
-        color = Color(0xFF009688),
+        color = Color(0xFF3B4FCF),
         fontWeight = FontWeight.Bold,
         modifier = modifier
             .clickable(onClick = { onClick() })

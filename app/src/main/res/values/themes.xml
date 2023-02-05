@@ -8,12 +8,12 @@
                 color del texto en el top bar white
         <item name="android:windowLightStatusBar">true</item>
 
-        <item name="android:background">@color/white</item>
-
+<!--        <item name="android:background">@color/white</item>-->
     </style>
 
     <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen" >
-        <item name="windowSplashScreenBackground">@color/ic_launcher_background</item>
+        <item name="windowSplashScreenBackground">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen</item>
         <item name="postSplashScreenTheme">@style/Theme.Composehexagonalarchitecture</item>
     </style>

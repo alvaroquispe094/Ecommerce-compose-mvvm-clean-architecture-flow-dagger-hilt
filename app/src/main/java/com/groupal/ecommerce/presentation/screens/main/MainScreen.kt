@@ -2,11 +2,13 @@ package com.groupal.ecommerce.presentation.screens.main
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -14,7 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.groupal.ecommerce.presentation.navigation.BottomNavigationRoutes
 import com.groupal.ecommerce.presentation.navigation.MainNavigation
 import com.groupal.ecommerce.presentation.navigation.bottomNavigationItems
-import com.groupal.ecommerce.presentation.theme.Purple500
+import com.groupal.ecommerce.presentation.theme.Blue500
 
 @Composable
 fun MainScreen(
@@ -61,7 +63,8 @@ fun TitleBar(navController: NavHostController, items: List<BottomNavigationRoute
 fun BottomNav(navController: NavHostController, items: List<BottomNavigationRoutes>) {
     BottomAppBar(
         backgroundColor = Color.White,
-        contentColor = Purple500
+        contentColor = Blue500,
+        elevation = 0.dp,
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route

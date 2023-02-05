@@ -15,7 +15,9 @@
     <string name="user_forgot_login">Forgot</string>
     <string name="user_btn_login">LOGIN</string>
     <string name="user_body_sign_up">"Don't have an account? "</string>
+    <string name="user_body_sign_in">"Already have an account? "</string>
     <string name="user_sign_up">Sign up</string>
+    <string name="user_sign_in">Sign in</string>
     <string name="user_subtitle_signup">Please sign up to continue</string>
     <string name="user_first_name_signup">FIRST NAME</string>
     <string name="user_ic_desc_first_name_signup">Sign up first name</string>
@@ -33,4 +35,5 @@
     <string name="user_phone_signup">PHONE</string>
     <string name="user_ic_desc_phone_signup">Sign up phone</string>
     <string name="user_signup">SIGN UP</string>
+
 </resources>

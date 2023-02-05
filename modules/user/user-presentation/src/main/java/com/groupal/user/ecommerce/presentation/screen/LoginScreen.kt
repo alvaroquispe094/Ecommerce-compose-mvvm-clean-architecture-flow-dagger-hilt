@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -18,7 +19,6 @@ import com.groupal.shared.ecommerce.presentation.theme.LocalTheme
 import com.groupal.user.ecommerce.domain.User
 import com.groupal.user.ecommerce.domain.UserValidation
 import com.groupal.user.ecommerce.presentation.viewmodel.AuthViewModel
-//import com.groupal.user.ecommerce.presentation.viewmodel.TokenViewModel
 import com.groupal.user_presentation.R
 import kotlinx.coroutines.launch
 
@@ -189,8 +189,9 @@ private fun LoginContent(
                 modifier = Modifier
                     .height(LocalTheme.current.space.large)
             )
-            GradientButton(
+            Button(
                 text = stringResource(R.string.user_btn_login),
+                color = Color(0xFF2E31E4),
                 modifier = Modifier
                     .align(Alignment.End),
                 onClick = { onSignIn() },
@@ -201,7 +202,7 @@ private fun LoginContent(
             Spacer(modifier = Modifier.weight(1f))
 
 //            if (isSignUpEnabled) {
-                Row(Modifier.padding(bottom = LocalTheme.current.padding.small)) {
+                Row(Modifier.padding(bottom = LocalTheme.current.padding.xlarge)) {
                     TextBody(
                         text = stringResource(R.string.user_body_sign_up)
                     )
