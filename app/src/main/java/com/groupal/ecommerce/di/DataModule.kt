@@ -32,38 +32,41 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DataModule {
 
+    private const val URL_BASE_PRODUCTION = "http://springbootecommerceapp-env.eba-pzwt8mfg.us-east-1.elasticbeanstalk.com"
+    private const val URL_BASE_DEVELOP = "http://10.0.2.2:3000"
+    private const val URL_BASE = URL_BASE_PRODUCTION // Por ahora apunta al backend deploy
+
     private const val PROVIDE_RETROFIT_AUTH_API = "provideRetrofitAuthAPI"
     private const val PROVIDE_RETROFIT_USER_API = "provideRetrofitUserAPI"
     private const val PROVIDE_RETROFIT_PRODUCT_API = "provideRetrofitProductAPI"
     private const val PROVIDE_RETROFIT_CONFIGURATION_API = "provideRetrofitConfigurationAPI"
 
-    /* TODO: Hoy por hoy no tiene sentido tener 3 provides distintos ya que esta todo en un mismo microservicio, pero a futuro al ser dominios distintos deberian separarse.*/
     @Singleton
     @Provides
     @Named(PROVIDE_RETROFIT_AUTH_API)
     fun provideRetrofitAuthAPI(okHttpClient: OkHttpClient,): Retrofit {
-        return buildRetrofit(okHttpClient,"https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
+        return buildRetrofit(okHttpClient,URL_BASE) //TODO: Parametrized URL
     }
 
     @Singleton
     @Provides
     @Named(PROVIDE_RETROFIT_USER_API)
     fun provideRetrofitUserAPI(okHttpClient: OkHttpClient,): Retrofit {
-        return buildRetrofit(okHttpClient,"https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
+        return buildRetrofit(okHttpClient,URL_BASE) //TODO: Parametrized URL
     }
 
     @Singleton
     @Provides
     @Named(PROVIDE_RETROFIT_CONFIGURATION_API)
     fun provideRetrofitConfigurationAPI(okHttpClient: OkHttpClient,): Retrofit {
-        return buildRetrofit(okHttpClient,"https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
+        return buildRetrofit(okHttpClient,URL_BASE) //TODO: Parametrized URL
     }
 
     @Singleton
     @Provides
     @Named(PROVIDE_RETROFIT_PRODUCT_API)
     fun provideRetrofitProductPI(okHttpClient: OkHttpClient,): Retrofit {
-        return buildRetrofit(okHttpClient,"https://crazy-gun-production.up.railway.app") //TODO: Parametrized URL
+        return buildRetrofit(okHttpClient,URL_BASE) //TODO: Parametrized URL
     }
 
     @Singleton
@@ -114,10 +117,24 @@ object DataModule {
         return ConfigurationRepository(configurationEndpoint)
     }
 
+    // Interceptor && Authentication
     @Singleton
     @Provides
     fun provideTokenManager(@ApplicationContext context: Context): TokenManager = TokenManager(context)
 
+    @Singleton
+    @Provides
+    fun provideUrl(): String = URL_BASE
+
+    @Singleton
+    @Provides
+    fun provideAuthInterceptor(tokenManager: TokenManager): AuthInterceptor =
+        AuthInterceptor(tokenManager)
+
+    @Singleton
+    @Provides
+    fun provideAuthAuthenticator(tokenManager: TokenManager, url: String): AuthAuthenticator =
+        AuthAuthenticator(tokenManager, url)
 
     @Singleton
     @Provides
@@ -135,24 +152,7 @@ object DataModule {
             .build()
     }
 
-    @Singleton
-    @Provides
-    fun provideAuthInterceptor(tokenManager: TokenManager): AuthInterceptor =
-        AuthInterceptor(tokenManager)
-
-    @Singleton
-    @Provides
-    fun provideAuthAuthenticator(tokenManager: TokenManager): AuthAuthenticator =
-        AuthAuthenticator(tokenManager)
-
-    @Singleton
-    @Provides
-    fun provideRetrofitBuilder(): Retrofit.Builder =
-        Retrofit.Builder()
-            .baseUrl("https://crazy-gun-production.up.railway.app")
-            .addConverterFactory(MoshiConverterFactory.create())
-
-
+    // Build Retrofit
     @Provides
     fun buildRetrofit(okHttpClient: OkHttpClient, url: String): Retrofit {
 
@@ -161,8 +161,6 @@ object DataModule {
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
-
-        //TODO: Add client or interceptor Okhttp
     }
 
 }

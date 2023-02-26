@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 class AuthAuthenticator @Inject constructor(
     private val tokenManager: TokenManager,
+    private val url: String,
 ): Authenticator {
 
     override fun authenticate(route: Route?, response: Response): Request? {
@@ -44,7 +45,7 @@ class AuthAuthenticator @Inject constructor(
         val okHttpClient = OkHttpClient.Builder().addInterceptor(loggingInterceptor).build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://crazy-gun-production.up.railway.app")
+            .baseUrl(url)
             .addConverterFactory(MoshiConverterFactory.create())
             .client(okHttpClient)
             .build()
