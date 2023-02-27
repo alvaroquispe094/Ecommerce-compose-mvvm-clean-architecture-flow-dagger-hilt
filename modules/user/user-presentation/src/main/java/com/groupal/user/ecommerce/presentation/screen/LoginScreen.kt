@@ -47,12 +47,12 @@ fun LoginScreen(
 
 //    val isSignUpEnabled by authViewModel.isSignUpEnabled.collectAsState()
 
-    LaunchedEffect(loginError) { //TODO: No hacer efectos sobre el que los esta generando
-        if (loginError != null) {
-            Toast.makeText(context, loginError.toString(), Toast.LENGTH_LONG).show()
-            authViewModel.cleanLoginError()
-        }
-    }
+//    LaunchedEffect(loginError) { //TODO: No hacer efectos sobre el que los esta generando
+//        if (loginError != null) {
+//            Toast.makeText(context, loginError.toString(), Toast.LENGTH_LONG).show()
+//            authViewModel.cleanLoginError()
+//        }
+//    }
 
     LoginContent(
         //TODO: nunca ejecutar corrotuinas en UI, utilizando otra cosa que no sea un efectos (por ej launchedEfects) o callbacks (aunque tambien se considere un efecto)

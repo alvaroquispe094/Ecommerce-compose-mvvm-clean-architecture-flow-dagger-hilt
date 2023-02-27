@@ -5,6 +5,8 @@ import com.groupal.shared.ecommerce.di.ApplicationCoroutineScope
 import com.groupal.shared.ecommerce.di.IODispatcher
 import com.groupal.shared.ecommerce.domain.GenericException
 import com.groupal.shared.ecommerce.service.LogService
+import com.groupal.shared.ecommerce.service.MessageService
+import com.groupal.shared.ecommerce.utils.MessageType
 import com.groupal.user.ecommerce.data.IAuthRepository
 import com.groupal.user.ecommerce.domain.LoginResponse
 import com.groupal.user.ecommerce.domain.SignUpRequest
@@ -22,6 +24,7 @@ class AuthService @Inject constructor(
     private val logService: LogService,
     private val authRepository: IAuthRepository,
     private val tokenManager: TokenManager,
+    private val messageService: MessageService,
     ) {
 
     init {
@@ -54,9 +57,11 @@ class AuthService @Inject constructor(
             tokenManager.saveToken(loginResponse.accessToken)
             tokenManager.emitToken(loginResponse.accessToken)
             _loginSession.emit(loginResponse)
+            messageService.showMessage(MessageType.SuccessLogin)
         } catch (e: GenericException) {
             logService.error("LOGIN", e.message.toString(), e.cause)
             _loginError.emit(e)
+            messageService.showMessage(MessageType.ErrorLogin)
         }
     }
 
@@ -64,6 +69,7 @@ class AuthService @Inject constructor(
         tokenManager.deleteToken()
         tokenManager.emitToken(null)
         _loginSession.emit(null)
+        messageService.showMessage(MessageType.SuccessLogin)
     }
 
     suspend fun signUp(signUpRequest: SignUpRequest) {

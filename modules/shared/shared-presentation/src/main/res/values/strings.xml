@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!-- snackBar -->
+    <string name="snack_bar_success">¡Has creado tu usuario y contraseña con éxito!</string>
+    <string name="login_success">¡Te has logueado con éxito!</string>
+    <string name="login_error">¡Credenciales incorrectas !</string>
+    <string name="snack_bar_error">¡Se ha producido un error, intente nuevamente mas tarde!</string>
+    <string name="snack_bar_user_creation_error">No pudimos procesar el correo. Ingresa uno nuevo o inténtalo más tarde.</string>
 </resources>
