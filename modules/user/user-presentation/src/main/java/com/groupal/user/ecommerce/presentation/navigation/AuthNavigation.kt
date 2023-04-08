@@ -5,6 +5,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.groupal.shared.ecommerce.presentation.util.collectAsStateLifecycleAware
 import com.groupal.user.ecommerce.domain.LoginResponse
 import com.groupal.user.ecommerce.presentation.screen.AccountCreatedScreen
 import com.groupal.user.ecommerce.presentation.screen.LoginScreen
@@ -35,7 +36,9 @@ fun AuthNavigation(
     val navController = rememberNavController()
     val loginSession by loginViewModel.loginSession.collectAsState()
     val isSignUpOk by loginViewModel.isSignUpOk.collectAsState()
-    val sessionToken by loginViewModel.sessionToken.collectAsState()
+    val sessionToken by loginViewModel.sessionToken.collectAsStateLifecycleAware()
+
+    val startingRoute = if (sessionToken == null) AuthRoute.LogIn else AuthRoute.Authenticated
 
     LaunchedEffect(isSignUpOk) {
         if(isSignUpOk) {
@@ -45,7 +48,7 @@ fun AuthNavigation(
 
     NavHost(
         navController = navController,
-        startDestination = destinationByTokenSession(sessionToken).route
+        startDestination = startingRoute.route
     ) {
         composable(AuthRoute.LogIn.route) {
             LoginScreen {

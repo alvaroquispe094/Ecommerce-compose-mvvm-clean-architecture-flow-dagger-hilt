@@ -104,4 +104,16 @@ class AuthService @Inject constructor(
         }
     }
 
+    /*fun initialize(scope: CoroutineScope) {
+        logService.info("CONFIGURATION", "GET FEATURE FLAGS")
+        try {
+            val token = tokenManager.getToken().first()
+            logService.info("Token: ", token.toString())
+            tokenManager.emitToken(token)
+
+        } catch (e: GenericException) {
+            logService.error(" FAIL CONFIGURATION TOKEN", e.message.toString(), e.cause)
+        }
+    }*/
+
 }

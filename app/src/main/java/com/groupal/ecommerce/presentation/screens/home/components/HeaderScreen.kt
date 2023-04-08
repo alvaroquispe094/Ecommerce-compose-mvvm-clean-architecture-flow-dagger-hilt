@@ -1,16 +1,12 @@
 package com.groupal.ecommerce.presentation.screens.home.components
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -35,7 +31,7 @@ fun HeaderScreen(
             LocalContentAlpha provides ContentAlpha.high
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_splash_screen),
+                painter = painterResource(id = R.drawable.ic_logo_dark),
                 contentDescription = stringResource(R.string.logo_description)
             )
         }

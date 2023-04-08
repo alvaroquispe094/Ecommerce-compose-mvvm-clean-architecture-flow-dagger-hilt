@@ -61,12 +61,12 @@ class AuthViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.Eagerly, false)*/
 
     init {
-        viewModelScope.launch {
+       /* viewModelScope.launch {
             emailSearch.debounce(3000).collect { mail ->
                 cleanUserExist()
                 existUser(mail)
             }
-        }
+        }*/
     }
 
     fun setSearchEmail(it: String) {
