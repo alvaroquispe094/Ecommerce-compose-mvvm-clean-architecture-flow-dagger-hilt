@@ -69,7 +69,7 @@ class AuthService @Inject constructor(
         tokenManager.deleteToken()
         tokenManager.emitToken(null)
         _loginSession.emit(null)
-        messageService.showMessage(MessageType.SuccessLogin)
+        //messageService.showMessage(MessageType.SuccessLogin)
     }
 
     suspend fun signUp(signUpRequest: SignUpRequest) {

@@ -17,16 +17,16 @@ fun ProductList(
 ){
     // Product Grid on home screen
     Box(modifier = Modifier
-        .padding(LocalTheme.current.padding.xxsmall)
+        //.padding(LocalTheme.current.padding.xxsmall)
     ) {
 
         LazyVerticalGrid(
-            modifier = Modifier
+            /*modifier = Modifier
                 //.fillMaxSize()
-                .navigationBarsPadding(),
+                .navigationBarsPadding(),*/
             state = state,
             columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(LocalTheme.current.padding.xsmall)
+            //contentPadding = PaddingValues(LocalTheme.current.padding.xsmall)
         ){
             items(products) { ProductCard(it) }
         }

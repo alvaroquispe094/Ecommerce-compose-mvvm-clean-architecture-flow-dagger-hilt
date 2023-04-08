@@ -12,11 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.groupal.ecommerce.presentation.screens.home.components.HeaderScreen
 import com.groupal.ecommerce.presentation.viewmodel.HomeViewModel
 import com.groupal.product.ecommerce.domain.Product
 import com.groupal.product.ecommerce.presentation.components.ProductList
+import com.groupal.shared.ecommerce.presentation.components.TopAppBar
 import com.groupal.shared.ecommerce.presentation.theme.LocalTheme
 
 @Composable
@@ -48,37 +50,40 @@ private fun HomeContent(
     Scaffold(
         scaffoldState = scaffoldState,
         backgroundColor = Color(0xFFFFFFFF),
+        modifier = Modifier.padding(8.dp, 0.dp),
         topBar = {
-            HeaderScreen(
-                navigateToLogin,
+            TopAppBar(
+                modifier = Modifier.fillMaxWidth(),
+                shouldShowBack = false
             )
-        }
-    ) {innerPadding ->
-
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .fillMaxSize()
-                .then(
-                    if (homeLoading) Modifier.alpha(LocalTheme.current.alpha.small)
-                    else Modifier.alpha(LocalTheme.current.alpha.medium)
-                )
-        ){
-            Column(
+//            HeaderScreen(
+//                navigateToLogin,
+//            )
+        },
+        content = { paddingValues ->
+            Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .padding(innerPadding),
-                verticalArrangement = Arrangement.SpaceBetween
+                    .fillMaxSize()
+                    .then(
+                        if (homeLoading) Modifier.alpha(LocalTheme.current.alpha.small)
+                        else Modifier.alpha(LocalTheme.current.alpha.medium)
+                    )
             ){
-                ProductList(products)
-            }
+                Column(
+                    modifier = Modifier
+                        .padding(paddingValues),
+                    verticalArrangement = Arrangement.SpaceBetween
+                ){
+                    ProductList(products)
+                }
 
-            if (homeLoading) {
-                UsersLoadingProgressIndicator()
+                if (homeLoading) {
+                    UsersLoadingProgressIndicator()
+                }
             }
         }
-
-    }
-
+    )
 }
 
 @Composable

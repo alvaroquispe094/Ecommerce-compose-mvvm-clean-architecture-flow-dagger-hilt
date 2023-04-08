@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -23,11 +24,12 @@ fun HeaderScreen(
     navigateToLogin: () -> Unit,
 ) {
     TopAppBar(
+        backgroundColor = Color.Transparent,
         elevation = 0.dp,
-        backgroundColor  = White,
+        //backgroundColor  = White,
         modifier = Modifier
-            .border(BorderStroke(1.dp, White))
-            .shadow(LocalTheme.current.padding.xxsmall)
+            //.border(BorderStroke(1.dp, White))
+            //.shadow(LocalTheme.current.padding.xxsmall)
     ){
         CompositionLocalProvider(
             LocalContentAlpha provides ContentAlpha.high

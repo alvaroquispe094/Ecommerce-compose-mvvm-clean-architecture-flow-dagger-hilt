@@ -1,9 +1,7 @@
 package com.groupal.ecommerce.presentation.navigation
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -20,6 +18,7 @@ import androidx.navigation.compose.composable
 import com.groupal.ecommerce.presentation.screens.home.HomeScreen
 import com.groupal.ecommerce.presentation.theme.Blue500
 import com.groupal.shared.ecommerce.presentation.components.SearchScreen
+import com.groupal.shared.ecommerce.presentation.components.TopAppBar
 import com.groupal.shared.ecommerce.presentation.theme.LocalTheme
 
 @Composable
@@ -39,9 +38,13 @@ fun MainNavigation(
         }
         composable(BottomNavigationRoutes.Shop.route) {
             // Screen content
-            Box(modifier = Modifier
+            Column(modifier = Modifier
                 .fillMaxSize()
             ) {
+                TopAppBar(
+                    modifier = Modifier.fillMaxWidth().padding(4.dp, 0.dp),
+                    shouldShowBack = false
+                )
                 SearchScreen(
                     value = search,
                     onValueChange = {
@@ -49,10 +52,10 @@ fun MainNavigation(
 
                      },
                 )
-                Text(
+                /*Text(
                     text = "Search screen",
                     modifier = Modifier.align(Alignment.Center)
-                )
+                )*/
             }
         }
         composable(BottomNavigationRoutes.Favorites.route) {

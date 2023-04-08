@@ -26,7 +26,7 @@
     <dimen name="btn_disabledElevation">0dp</dimen>
 
     <dimen name="space_height_xsmall">8dp</dimen>
-    <dimen name="space_height_small">30dp</dimen>
+    <dimen name="space_height_small">16dp</dimen>
     <dimen name="space_height_medium">32dp</dimen>
     <dimen name="space_height_large">36dp</dimen>
     <dimen name="space_height_xlarge">40dp</dimen>

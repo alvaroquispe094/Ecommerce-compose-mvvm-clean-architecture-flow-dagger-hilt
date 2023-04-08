@@ -32,7 +32,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DataModule {
 
-    private const val URL_BASE_PRODUCTION = "http://springbootecommerceapp-env.eba-pzwt8mfg.us-east-1.elasticbeanstalk.com"
+    private const val URL_BASE_PRODUCTION = "http://ecommerceapp-env-1.eba-xg323xbv.us-east-1.elasticbeanstalk.com"
     private const val URL_BASE_DEVELOP = "http://10.0.2.2:3000"
     private const val URL_BASE = URL_BASE_PRODUCTION // Por ahora apunta al backend deploy
 
