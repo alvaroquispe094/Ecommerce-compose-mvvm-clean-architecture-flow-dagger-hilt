@@ -1,3 +1,4 @@
+/*
 package com.groupal.user.ecommerce.data.utils
 
 import com.groupal.configuration.ecommerce.data.local.repository.TokenManager
@@ -18,4 +19,4 @@ class AuthInterceptor @Inject constructor(
         request.addHeader("Authorization", "Bearer $token")
         return chain.proceed(request.build())
     }
-}
+}*/

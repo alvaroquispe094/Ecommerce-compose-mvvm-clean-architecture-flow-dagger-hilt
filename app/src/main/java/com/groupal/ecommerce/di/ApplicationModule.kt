@@ -2,6 +2,7 @@ package com.groupal.ecommerce.di
 
 import com.groupal.shared.ecommerce.di.ApplicationCoroutineScope
 import com.groupal.shared.ecommerce.di.IODispatcher
+import com.groupal.shared.ecommerce.di.ViewModelScope
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +16,14 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ApplicationModule {
 
-    private var _coroutineScope: CoroutineScope? = null
-    private val coroutineScope: CoroutineScope get() = _coroutineScope ?: throw IllegalStateException("I must set a coroutine scope from the activity")
+    private var mutableCoroutineScope: CoroutineScope? = null
+    private val coroutineScope: CoroutineScope get() =
+        mutableCoroutineScope ?: throw IllegalStateException(
+            "I must set a coroutine scope from the activity"
+        )
 
     fun setApplicationScope(coroutineScope: CoroutineScope) {
-        _coroutineScope = coroutineScope
+        mutableCoroutineScope = coroutineScope
     }
 
     @ApplicationCoroutineScope
@@ -33,4 +37,8 @@ object ApplicationModule {
     @Singleton
     @Provides
     fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
+
+    @ViewModelScope
+    @Provides
+    fun provideViewModelScope(): CoroutineScope? = null
 }

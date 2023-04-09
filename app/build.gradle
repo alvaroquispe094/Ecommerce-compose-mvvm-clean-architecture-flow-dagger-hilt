@@ -56,6 +56,7 @@ android {
 dependencies {
 
     implementation project(path: ':modules:shared:shared')
+    implementation project(path: ':modules:shared:shared-data')
     implementation project(path: ':modules:shared:shared-presentation')
     implementation project(path: ':modules:configuration:configuration')
     implementation project(path: ':modules:configuration:configuration-data-network')

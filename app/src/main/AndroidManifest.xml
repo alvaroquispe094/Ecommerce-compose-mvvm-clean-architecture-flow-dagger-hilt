@@ -8,7 +8,6 @@
     <application
         android:name=".EcommerceApplication"
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App.SplashScreen"
+        android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
             android:name=".presentation.screens.splash.SplashActivity"
@@ -28,15 +28,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"
-            android:usesCleartextTraffic="true"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.Composehexagonalarchitecture"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
-                <data android:scheme="@string/company_name"
-                    tools:ignore="AppLinkUrlError" />
+                <data android:scheme="@string/company_name" />
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />

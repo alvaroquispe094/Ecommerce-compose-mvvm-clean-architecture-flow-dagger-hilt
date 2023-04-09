@@ -1,3 +1,4 @@
+/*
 package com.groupal.user.ecommerce.data.utils
 
 import com.groupal.configuration.ecommerce.data.local.repository.TokenManager
@@ -52,4 +53,4 @@ class AuthAuthenticator @Inject constructor(
         val service = retrofit.create(AuthEndpoint::class.java)
         return service.refreshToken("Bearer $refreshToken")
     }
-}
+}*/

@@ -1,16 +1,13 @@
-/*
 package com.groupal.configuration.ecommerce.data
 
-import com.groupal.configuration.ecommerce.domain.FeatureFlags
-import com.groupal.configuration.ecommerce.domain.Token
+import com.groupal.configuration.ecommerce.domain.ConfigurationStorage
 import kotlinx.coroutines.flow.Flow
 
 interface IConfigurationLocalRepository {
-    val configuration: Flow<FeatureFlags>
 
-    val configurationToken: Flow<Token>
+    val configuration: Flow<ConfigurationStorage>
 
-    suspend fun updateToken(token: Token)
+    suspend fun updateOnBoardingStage(onBoardingStage: Int)
 
-    suspend fun update(featureFlags: FeatureFlags)
-}*/
+    suspend fun clear()
+}

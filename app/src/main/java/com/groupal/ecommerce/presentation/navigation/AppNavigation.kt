@@ -16,7 +16,7 @@ import com.groupal.shared.presentation.R as RShared
 fun AppNavigation(
     mainViewModel: MainViewModel = hiltViewModel(),
 ){
-    val snackbarHostState = remember{ SnackbarHostState() }
+    /*val snackbarHostState = remember{ SnackbarHostState() }
 
     val signUpError  by mainViewModel.signUpError.collectAsState()
     val snackBar  by mainViewModel.snackBar.collectAsState()
@@ -24,11 +24,11 @@ fun AppNavigation(
     val message = getMessage(snackBar)
 
     // Muestra error generico al fallar el backend
-    LaunchedEffect(signUpError) {
+    *//*LaunchedEffect(signUpError) {
         if (signUpError != null) {
             mainViewModel.cleanSignUpError()
         }
-    }
+    }*//*
 
     LaunchedEffect(snackBar) {
         if (snackBar != null) {
@@ -40,14 +40,14 @@ fun AppNavigation(
             mainViewModel.cleanSnackBar()
         }
 
-    }
+    }*/
 
     AuthNavigation { MainScreen(onLogout = it) }
 
-    SnackBar(
+    /*SnackBar(
         snackbarHostState = snackbarHostState,
         mainViewModel.snackbarBackgroundColor,
-    )
+    )*/
 }
 
 //@Composable

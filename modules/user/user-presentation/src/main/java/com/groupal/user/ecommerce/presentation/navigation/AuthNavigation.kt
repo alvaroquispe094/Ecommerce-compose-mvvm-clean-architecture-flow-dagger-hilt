@@ -36,15 +36,16 @@ fun AuthNavigation(
     val navController = rememberNavController()
     val loginSession by loginViewModel.loginSession.collectAsState()
     val isSignUpOk by loginViewModel.isSignUpOk.collectAsState()
-    val sessionToken by loginViewModel.sessionToken.collectAsStateLifecycleAware()
+    //val sessionToken by loginViewModel.sessionToken.collectAsStateLifecycleAware()
+    val isLoggedIn by loginViewModel.isLoggedIn.collectAsStateLifecycleAware()
 
-    val startingRoute = if (sessionToken == null) AuthRoute.LogIn else AuthRoute.Authenticated
+    val startingRoute = if (isLoggedIn) AuthRoute.Authenticated else AuthRoute.LogIn
 
-    LaunchedEffect(isSignUpOk) {
+    /*LaunchedEffect(isSignUpOk) {
         if(isSignUpOk) {
             navController.navigate(AuthRoute.Created.route)
         }
-    }
+    }*/
 
     NavHost(
         navController = navController,

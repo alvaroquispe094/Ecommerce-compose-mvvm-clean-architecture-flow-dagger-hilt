@@ -12,12 +12,12 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface AuthEndpoint {
-    @POST("/api/v1/auth/signin")
+    @POST("api/v1/auth/signin")
     suspend fun login(@Body loginRequest: LoginRequestRest): Response<LoginResponseRest>
 
-    @GET("/api/v1/auth/refresh")
+    @GET("api/v1/auth/refresh")
     suspend fun refreshToken(@Header("Authorization") token: String): Response<LoginResponseRest>
 
-    @POST("/api/v1/authentication/register")
+    @POST("api/v1/authentication/register")
     suspend fun signUp(@Body signUpRequest: SignUpRequestRest): Response<SignUpResponseRest>
 }

@@ -28,7 +28,7 @@ class AuthViewModel @Inject constructor(
 ) : ViewModel() {
 
     val loginSession: StateFlow<LoginResponse?> = authService.loginSession
-    val sessionToken: StateFlow<String?> = authService.tokenSession
+    //val sessionToken: StateFlow<String?> = authService.tokenSession
 
     val loginError: StateFlow<String?> =
         authService.loginError.map { exception -> exception?.message }
@@ -60,14 +60,21 @@ class AuthViewModel @Inject constructor(
         it.isSignUpEnable
     }.stateIn(viewModelScope, SharingStarted.Eagerly, false)*/
 
-    init {
-       /* viewModelScope.launch {
+    val isLoggedIn: StateFlow<Boolean> = authService.isLoggedIn
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = false
+        )
+
+    /*init {
+       *//* viewModelScope.launch {
             emailSearch.debounce(3000).collect { mail ->
                 cleanUserExist()
                 existUser(mail)
             }
-        }*/
-    }
+        }*//*
+    }*/
 
     fun setSearchEmail(it: String) {
         _emailSearch.value = it
