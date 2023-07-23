@@ -6,6 +6,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class LoginResponseRest(
     val accessToken: String,
+    val refreshToken: String,
     val id: Long,
     val username: String,
     val email: String,
@@ -14,6 +15,7 @@ data class LoginResponseRest(
 ) {
     fun toDomain() = LoginResponse(
         accessToken = accessToken,
+        refreshToken = refreshToken,
         id = id,
         username = username,
         email = email,

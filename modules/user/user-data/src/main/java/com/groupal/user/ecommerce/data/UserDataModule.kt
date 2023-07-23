@@ -31,7 +31,7 @@ object UserDataModule {
     @Named(PROVIDE_RETROFIT_AUTH_API)
     fun provideRetrofitAuthAPI(@UnauthenticatedHttpClient okHttpClient: OkHttpClient): Retrofit {
         // TODO: Parametrized URL
-        return buildRetrofit(okHttpClient, "http://ecommerceapp-env-1.eba-xg323xbv.us-east-1.elasticbeanstalk.com/")
+        return buildRetrofit(okHttpClient, "http://ecommerce-app-env.eba-xg323xbv.us-east-1.elasticbeanstalk.com/")
     }
 
     @Singleton
@@ -41,7 +41,7 @@ object UserDataModule {
         return buildRetrofit(
             okHttpClient,
             // TODO: Parametrized URL
-            "http://ecommerceapp-env-1.eba-xg323xbv.us-east-1.elasticbeanstalk.com/"
+            "http://ecommerce-app-env.eba-xg323xbv.us-east-1.elasticbeanstalk.com/"
         )
     }
 

@@ -44,7 +44,7 @@ object DataModule {
     fun provideRetrofitConfigurationAPI(okHttpClient: OkHttpClient): Retrofit {
         return buildRetrofit(
             okHttpClient,
-            "http://ecommerceapp-env-1.eba-xg323xbv.us-east-1.elasticbeanstalk.com/"
+            "http://ecommerce-app-env.eba-xg323xbv.us-east-1.elasticbeanstalk.com/"
         ) // TODO: Parametrized URL
     }
 
@@ -54,7 +54,7 @@ object DataModule {
     fun provideRetrofitProductPI(okHttpClient: OkHttpClient): Retrofit {
         return buildRetrofit(
             okHttpClient,
-            "http://ecommerceapp-env-1.eba-xg323xbv.us-east-1.elasticbeanstalk.com/"
+            "http://ecommerce-app-env.eba-xg323xbv.us-east-1.elasticbeanstalk.com/"
         ) // TODO: Parametrized URL
     }
 

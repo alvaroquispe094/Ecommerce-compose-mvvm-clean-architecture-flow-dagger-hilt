@@ -4,14 +4,12 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,14 +18,19 @@ import com.groupal.ecommerce.presentation.theme.Blue500
 import com.groupal.shared.ecommerce.presentation.components.SearchScreen
 import com.groupal.shared.ecommerce.presentation.components.TopAppBar
 import com.groupal.shared.ecommerce.presentation.theme.LocalTheme
+import com.groupal.user.ecommerce.presentation.viewmodel.AuthViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun MainNavigation(
+    loginViewModel: AuthViewModel = hiltViewModel(),
     onLogout: () -> Unit,
     navController: NavHostController
 
 ){
     var search by rememberSaveable { mutableStateOf("") }
+
+    val coroutineScope = rememberCoroutineScope() //Scope para coroutines en composables
 
     NavHost(
         navController = navController,
@@ -101,7 +104,11 @@ fun MainNavigation(
                     modifier = Modifier
                         .padding(start = LocalTheme.current.padding.medium)
                         .align(Alignment.Center),
-                    onClick = { onLogout() },
+                    onClick = {
+                        coroutineScope.launch {
+                            loginViewModel.logout()
+                        }
+                    } ,
                     border = BorderStroke(width = 1.dp, color = Blue500)
                 ) {
                     Text(text = "Logout")

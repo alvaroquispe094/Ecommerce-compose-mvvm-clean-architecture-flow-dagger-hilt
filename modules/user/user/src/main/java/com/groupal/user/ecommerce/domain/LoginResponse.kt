@@ -2,6 +2,7 @@ package com.groupal.user.ecommerce.domain
 
 data class LoginResponse(
     val accessToken: String,
+    val refreshToken: String,
     val id: Long,
     val username: String,
     val email: String,

@@ -33,12 +33,12 @@ class MainViewModel @Inject constructor(
         @Composable
         get() = snackBarService.snackbarBackgroundColor
 
-   /* val isLoggedIn: StateFlow<Boolean> = authService.isLoggedIn
+    val isLoggedIn: StateFlow<Boolean> = authService.isLoggedIn
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(),
             initialValue = false
-        )*/
+        )
 
     suspend fun show(snackbarHostState: SnackbarHostState, snackbarState: SnackBarState, message: String) {
         viewModelScope.launch(Dispatchers.IO){

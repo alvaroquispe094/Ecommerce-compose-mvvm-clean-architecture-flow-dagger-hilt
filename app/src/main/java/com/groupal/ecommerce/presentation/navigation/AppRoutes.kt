@@ -2,6 +2,16 @@ package com.groupal.ecommerce.presentation.navigation
 
 import com.groupal.ecommerce.R
 
+enum class MainRoute {
+    Home,
+    Charge,
+    Account,
+    Profile,
+    Registration,
+    LegalRepresentative,
+    MposPurchase
+}
+
 sealed class AppRoutes(val route: String){
     object LoginScreen: AppRoutes("login")
     object SignUpScreen: AppRoutes("signup")
