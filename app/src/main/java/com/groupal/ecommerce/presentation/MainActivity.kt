@@ -26,11 +26,11 @@ class MainActivity : ComponentActivity() {
         ApplicationModule.setApplicationScope(this.lifecycleScope)
 
         // Splash screen
-        /*installSplashScreen().apply {
+        installSplashScreen().apply {
             setKeepOnScreenCondition() {
                 viewModel.isLoading.value
             }
-        }*/
+        }
         setContent {
             MyApp {
                 DefaultThemeProvider {
